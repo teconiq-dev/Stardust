@@ -28,7 +28,7 @@ export default function Home() {
       <div className="my-16 text-center animate-fade-in">
         <Link href="/Login">
       <Button>
-        Get started
+        Get Started
       </Button>
       </Link>
       </div>
