@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const navigation = [
-  { name: "Projects", href: "/login" },
+  { name: "login", href: "/login" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -26,9 +26,11 @@ export default function Home() {
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
       <div className="my-16 text-center animate-fade-in">
+        <Link href="/Login">
       <Button>
         Get started
       </Button>
+      </Link>
       </div>
     </div>
   );
