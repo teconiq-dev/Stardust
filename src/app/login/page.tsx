@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,8 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
 
 export default function Login() {
+  const [selectValue, setSelectValue] = useState("student");
   return (
     <div className="flex items-center justify-center h-screen">
       <Tabs defaultValue="account" className="w-[400px]">
@@ -35,13 +38,13 @@ export default function Login() {
             <CardContent className="space-y-2">
               <div className="space-y-1">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" defaultValue="Jude Saju" />
+                <Input id="name" />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="framework">Student or Company</Label>
-                <Select>
+                <Select onValueChange={(val) => setSelectValue(val)}>
                   <SelectTrigger id="user_type">
-                    <SelectValue placeholder="Select" />
+                    <SelectValue placeholder="select" />
                   </SelectTrigger>
                   <SelectContent position="popper">
                     <SelectItem value="student">Student</SelectItem>
@@ -50,7 +53,7 @@ export default function Login() {
                   </SelectContent>
                 </Select>
               </div>
-              {SelectValue === "student" && (
+              {selectValue === "student" && (
                 <div className="space-y-1">
                   <Label htmlFor="year_of_study">Year of Study</Label>
                   <Input id="year_of_study" defaultValue="5" />
