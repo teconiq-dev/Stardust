@@ -42,41 +42,12 @@ export default function Login() {
               <CardDescription>Login here.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="framework">Student or Alumni</Label>
-                <Select onValueChange={(val) => setSelectValue(val)}>
-                  <SelectTrigger id="user_type">
-                    <SelectValue placeholder="select" />
-                  </SelectTrigger>
-                  <SelectContent position="popper">
-                    <SelectItem value="student">Student</SelectItem>
-                    <SelectItem value="alumni">Alumni</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
               <div className="space-y-1">
                 <Label htmlFor="name">Name</Label>
                 <Input id="name" />
               </div>
 
-              {selectValue === "student" && (
-                <div className="space-y-1">
-                  <Label htmlFor="year_of_study">Year of Study</Label>
-                  <Input
-                    id="year_of_study"
-                    type="number"
-                    min="1"
-                    max="5"
-                    defaultValue="5"
-                  />
-                  <Label htmlFor="rollno">Roll Number</Label>
-                  <Input
-                    id="rollno"
-                    pattern="^\d{2}T\d{4}$"
-                    title="Roll number must be in the format xxTxxxx where xx is any 2-digit number and xxxx is a 4-digit number."
-                  />
-                </div>
-              )}
+
               <div className="space-y-1">
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" />
@@ -84,7 +55,9 @@ export default function Login() {
             </CardContent>
 
             <CardFooter>
-              <Button>Login</Button>
+            <Link href="/dashboard">
+                <Button>Login</Button>
+              </Link>
             </CardFooter>
           </Card>
           <Alert>
@@ -96,17 +69,15 @@ export default function Login() {
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
-            <AlertDescription>Input credentials were wrong</AlertDescription>
+            <AlertDescription>Wrong Username or Password.</AlertDescription>
           </Alert>
         </TabsContent>
 
         <TabsContent value="password">
           <Card>
             <CardHeader>
-              <CardTitle>Password</CardTitle>
-              <CardDescription>
-                If you forget password, you can contact department
-              </CardDescription>
+              <CardTitle>Institution Account</CardTitle>
+              <CardDescription>Login here</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
@@ -119,7 +90,7 @@ export default function Login() {
               </div>
             </CardContent>
             <CardFooter>
-              <Link href="/dashboard">
+              <Link href="/lookup">
                 <Button>Login</Button>
               </Link>
             </CardFooter>
