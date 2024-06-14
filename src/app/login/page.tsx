@@ -1,5 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Terminal } from "lucide-react";
+import { AlertCircle } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
 import {
   Card,
   CardContent,
@@ -26,8 +32,8 @@ export default function Login() {
     <div className="flex items-center justify-center h-screen">
       <Tabs defaultValue="account" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger value="account">Student</TabsTrigger>
+          <TabsTrigger value="password">Institution</TabsTrigger>
         </TabsList>
         <TabsContent value="account">
           <Card>
@@ -36,35 +42,64 @@ export default function Login() {
               <CardDescription>Login here.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
-              <div className="space-y-1">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" />
-              </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="framework">Student or Company</Label>
+                <Label htmlFor="framework">Student or Alumni</Label>
                 <Select onValueChange={(val) => setSelectValue(val)}>
                   <SelectTrigger id="user_type">
                     <SelectValue placeholder="select" />
                   </SelectTrigger>
                   <SelectContent position="popper">
                     <SelectItem value="student">Student</SelectItem>
-                    <SelectItem value="company">Company</SelectItem>
                     <SelectItem value="alumni">Alumni</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
+              <div className="space-y-1">
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" />
+              </div>
+
               {selectValue === "student" && (
                 <div className="space-y-1">
                   <Label htmlFor="year_of_study">Year of Study</Label>
-                  <Input id="year_of_study" defaultValue="5" />
+                  <Input
+                    id="year_of_study"
+                    type="number"
+                    min="1"
+                    max="5"
+                    defaultValue="5"
+                  />
+                  <Label htmlFor="rollno">Roll Number</Label>
+                  <Input
+                    id="rollno"
+                    pattern="^\d{2}T\d{4}$"
+                    title="Roll number must be in the format xxTxxxx where xx is any 2-digit number and xxxx is a 4-digit number."
+                  />
                 </div>
               )}
+              <div className="space-y-1">
+                <Label htmlFor="password">Password</Label>
+                <Input id="password" type="password" />
+              </div>
             </CardContent>
+
             <CardFooter>
-              <Button>Save changes</Button>
+              <Button>Login</Button>
             </CardFooter>
           </Card>
+          <Alert>
+            <Terminal className="h-4 w-4" />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription>Login in progress</AlertDescription>
+          </Alert>
+
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>Input credentials were wrong</AlertDescription>
+          </Alert>
         </TabsContent>
+
         <TabsContent value="password">
           <Card>
             <CardHeader>
@@ -75,14 +110,30 @@ export default function Login() {
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
-                <Label htmlFor="password">password</Label>
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" />
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Login</Button>
+              <Link href="/dashboard">
+                <Button>Login</Button>
+              </Link>
             </CardFooter>
           </Card>
+          <Alert>
+            <Terminal className="h-4 w-4" />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription>Login in progress</AlertDescription>
+          </Alert>
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>Wrong Username or Password.</AlertDescription>
+          </Alert>
         </TabsContent>
       </Tabs>
     </div>
