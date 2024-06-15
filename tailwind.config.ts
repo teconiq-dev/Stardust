@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
@@ -18,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -67,30 +71,10 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        title: {
-          "0%": {
-            "line-height": "0%",
-            "letter-spacing": "0.25em",
-            opacity: "0",
-          },
-          "25%": {
-            "line-height": "0%",
-            opacity: "0%",
-          },
-          "80%": {
-            opacity: "100%",
-          },
-
-          "100%": {
-            "line-height": "100%",
-            opacity: "100%",
-          },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        title: "title 3s ease-out forwards",
       },
     },
   },
@@ -98,3 +82,4 @@ const config = {
 } satisfies Config;
 
 export default config;
+
