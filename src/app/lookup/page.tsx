@@ -4,7 +4,9 @@ export default function SkeletonGrid() {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="grid grid-cols-3 gap-16">
-        <SkeletonCard />
+        {Array.from({ length: 6 }).map((_, i) => (
+          <SkeletonCard key={i} />
+        ))}
       </div>
     </div>
   );
@@ -21,4 +23,3 @@ function SkeletonCard() {
     </div>
   );
 }
-
