@@ -1,15 +1,13 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function SkeletonGrid() {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="grid grid-cols-3 gap-16">
-        {Array(9).fill().map((_, i) => (
-          <SkeletonCard key={i} />
-        ))}
+        <SkeletonCard />
       </div>
     </div>
-  )
+  );
 }
 
 function SkeletonCard() {
@@ -21,5 +19,6 @@ function SkeletonCard() {
         <Skeleton className="h-4 w-[200px]" />
       </div>
     </div>
-  )
+  );
 }
+
