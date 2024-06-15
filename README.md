@@ -76,7 +76,7 @@ yarn dev
 #### Note
 
 Fork and pull requests are welcome. Please ensure that you have tested the changes before submitting a pull request.
-Feel free to open issules if you notice any bugs or have any suggestions.
+Feel free to open issues if you notice any bugs or have any suggestions.
 
 #### Links and Resources
 
