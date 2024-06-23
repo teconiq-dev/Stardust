@@ -1,26 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import DatePickerWithRange from "@/app/EditProfile/components/date-picker-withrange";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
 import {
   Form,
   FormControl,
@@ -30,13 +17,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { toast } from "@/components/ui/use-toast";
+import { DatePickerWithRange } from "@/components/ui/date-range-picker";
 
 const accountFormSchema = z.object({
   skill: z
@@ -99,7 +81,7 @@ export function AccountForm() {
               <FormControl>
                 <Input placeholder="eg. AI, Ml" {...field} />
               </FormControl>
-              <ToggleGroup type="multiple" variant="outline">
+              <ToggleGroup type="multiple" variant="outline" size="sm">
                 <ToggleGroupItem value="machine_learning">
                   Machine Learning
                 </ToggleGroupItem>
@@ -171,9 +153,7 @@ export function AccountForm() {
                   <FormItem className="flex flex-col">
                     <FormLabel>From - To</FormLabel>
                     <DatePickerWithRange className="[&>button]:w-[260px]" />
-                    <FormDescription>
-                      Enter you active term.
-                    </FormDescription>
+                    <FormDescription>Enter you active term.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}

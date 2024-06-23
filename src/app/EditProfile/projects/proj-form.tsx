@@ -1,25 +1,7 @@
 "use client";
-import {
-  ChevronDownIcon,
-  CircleIcon,
-  PlusIcon,
-  StarIcon,
-} from "@radix-ui/react-icons";
 
-import { Button } from "@/components/ui/button";
-
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { CircleIcon, StarIcon } from "@radix-ui/react-icons";
 import { Separator } from "@/components/ui/separator";
-
-import * as button from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -38,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 export function AddPro() {
   return (
@@ -120,8 +103,8 @@ export function AddPro() {
             </div>
           </CardContent>
           <CardFooter className="justify-between space-x-2">
-            <button.Button variant="ghost">Cancel</button.Button>
-            <button.Button>Submit</button.Button>
+            <Button variant="ghost">Cancel</Button>
+            <Button>Submit</Button>
           </CardFooter>
         </Card>
       </div>

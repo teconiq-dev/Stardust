@@ -1,27 +1,6 @@
 "use client";
-import {
-  ChevronDownIcon,
-  CircleIcon,
-  PlusIcon,
-  StarIcon,
-} from "@radix-ui/react-icons";
-
-import { Button } from "@/components/ui/button";
-
-import DatePickerWithRange from "@/app/EditProfile/components/date-picker-withrange";
-
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { CircleIcon } from "@radix-ui/react-icons";
 import { Separator } from "@/components/ui/separator";
-
-import * as button from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -32,14 +11,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { DatePickerWithRange } from "@/components/ui/date-range-picker";
+import { Button } from "@/components/ui/button";
 
 export function AddInt() {
   return (
@@ -104,7 +78,7 @@ export function AddInt() {
               />
             </div>
             <div>
-            <Label htmlFor="date">From - To</Label>
+              <Label htmlFor="date">From - To</Label>
               <DatePickerWithRange className="[&>button]:w-[260px]" />
             </div>
             <div>
@@ -115,8 +89,8 @@ export function AddInt() {
             </div>
           </CardContent>
           <CardFooter className="justify-between space-x-2">
-            <button.Button variant="ghost">Cancel</button.Button>
-            <button.Button>Submit</button.Button>
+            <Button variant="ghost">Cancel</Button>
+            <Button>Submit</Button>
           </CardFooter>
         </Card>
       </div>
