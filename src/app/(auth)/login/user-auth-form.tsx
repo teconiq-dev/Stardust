@@ -30,7 +30,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           <div className="grid gap-2">
             <div className="grid gap-1">
             <Label className="sr-only" htmlFor="userID">
-                STudent ID
+                Student ID
               </Label>
               <Input
                 id="userID"
