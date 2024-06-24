@@ -85,10 +85,10 @@ export function AddPro() {
                 <Label htmlFor="pr_name">Project Name</Label>
                 <Input id="pr_name" placeholder="Project Name" />
               </div>
-              {/* <div className="grid gap-2">
-                <Label htmlFor="lang">Language</Label>
-                <Input id="lang" placeholder="C++" />
-              </div> */}
+              <div className="grid gap-2">
+                <Label htmlFor="Position">Position</Label>
+                <Input id="lang" placeholder="Developer" />
+              </div>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="subject">Link</Label>
