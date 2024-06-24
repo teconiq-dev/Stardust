@@ -3,6 +3,7 @@ import React from "react";
 import Particles from "../components/particles";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import Globe from "@/components/ui/magicui/globe";
 
 export default function Home() {
   return (
@@ -25,6 +26,10 @@ export default function Home() {
           <Button>Get Started</Button>
         </Link>
       </div>
+     
+      <Globe className="top-28 z-[-1]" />
+      <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
+
     </div>
   );
 }

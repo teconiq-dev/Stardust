@@ -20,10 +20,9 @@ export default function ResizableDemo() {
           </Link>
         </div>
       </ResizablePanel>
-      
+
       <ResizableHandle withHandle />
 
-  
       <ResizablePanel defaultSize={50}>
         <ResizablePanelGroup direction="vertical">
           <ResizablePanel defaultSize={25}>
@@ -45,15 +44,17 @@ export default function ResizableDemo() {
           </ResizablePanel>
         </ResizablePanelGroup>
       </ResizablePanel>
-      
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={25}>
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold">Notification</span>
+        <div className="flex h-full flex-col items-center justify-center p-6">
+          <span className="font-semibold">Notification Graph</span>
+          <div className="mt-4 flex h-full items-center justify-center">
+            <Link href="/student/ViewProfile">
+              <Button>View Profile</Button>
+            </Link>
+          </div>
         </div>
       </ResizablePanel>
-  
-
     </ResizablePanelGroup>
   );
 }

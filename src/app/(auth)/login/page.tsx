@@ -3,6 +3,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { UserAuthForm } from "./user-auth-form";
 import { Command } from "lucide-react";
+import IconCloud from "@/components/ui/magicui/icon-cloud";
+
+const slugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
 
 export const metadata: Metadata = {
   title: "Authentication",
@@ -20,20 +54,15 @@ export default function AuthenticationPage() {
         </div>
         <div className="relative z-20 mt-auto">
           <div className="w-full flex flex-col justify-center">
-            <Image
-              src="/dark_auth.png"
-              width={420}
-              height={420}
-              alt="Authentication"
-              className="hidden lg:block"
-            />
+            
+              <IconCloud iconSlugs={slugs} />
+           
+
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;This library has saved me countless hours of work and
-                helped me deliver stunning designs to my clients faster than
-                ever before.&rdquo;
+                &ldquo;Education is the most powerful weapon which you can use to change the world.&rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-sm">Nelson Mandela</footer>
             </blockquote>
           </div>
         </div>
@@ -45,7 +74,7 @@ export default function AuthenticationPage() {
               Students Login
             </h1>
             <p className="text-sm text-muted-foreground">
-              Enter your email below to login
+              Enter your StudentID below to login
             </p>
           </div>
           <UserAuthForm />
