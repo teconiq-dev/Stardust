@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { AddInt } from "@/app/EditProfile/internships/inter-form"
+import { AddInt } from "./inter-form"
 
 export default function SettingsInternshipPage() {
   return (

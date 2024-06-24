@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { AddPro } from "@/app/EditProfile/projects/proj-form";
+import { AddPro } from "./proj-form";
 
 export default function SettingsProjectPage() {
   return (
