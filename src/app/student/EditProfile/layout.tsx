@@ -11,19 +11,19 @@ export const metadata: Metadata = {
 const sidebarNavItems = [
   {
     title: "Profile",
-    href: "/EditProfile",
+    href: "/student/EditProfile",
   },
   {
     title: "Account",
-    href: "/EditProfile/account",
+    href: "/student/EditProfile/account",
   },
   {
     title: "Projects",
-    href: "/EditProfile/projects",
+    href: "/student/EditProfile/projects",
   },
   {
     title: "Internships",
-    href: "/EditProfile/internships",
+    href: "/student/EditProfile/internships",
   },
 ];
 
