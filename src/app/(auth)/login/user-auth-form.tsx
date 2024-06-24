@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { LoaderCircle } from "lucide-react";
+import Link from "next/link";
+
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -27,15 +29,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         <form onSubmit={onSubmit}>
           <div className="grid gap-2">
             <div className="grid gap-1">
-              <Label className="sr-only" htmlFor="email">
-                Email
+            <Label className="sr-only" htmlFor="userID">
+                Student ID
               </Label>
               <Input
-                id="email"
-                placeholder="name@example.com"
-                type="email"
+                id="userID"
+                placeholder="21T1101"
+                type="text"
                 autoCapitalize="none"
-                autoComplete="email"
+                autoComplete="username"
                 autoCorrect="off"
                 disabled={isLoading}
               />
@@ -54,12 +56,14 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 disabled={isLoading}
               />
             </div>
+            <Link href="/student/dashboard" className="grid gap-2">
             <Button disabled={isLoading}>
               {isLoading && (
                 <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
               )}
               Sign In with Email
             </Button>
+            </Link>
           </div>
         </form>
       </div>
