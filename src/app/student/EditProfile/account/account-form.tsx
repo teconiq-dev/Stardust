@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { DatePickerWithRange } from "@/components/ui/date-range-picker";
+import SkillComponent from "./SkillComponent";
 
 const accountFormSchema = z.object({
   skill: z
@@ -78,26 +78,7 @@ export function AccountForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Skills</FormLabel>
-              <FormControl>
-                <Input placeholder="eg. AI, Ml" {...field} />
-              </FormControl>
-              <ToggleGroup type="multiple" variant="outline" size="sm">
-                <ToggleGroupItem value="machine_learning">
-                  Machine Learning
-                </ToggleGroupItem>
-                <ToggleGroupItem value="python">Python</ToggleGroupItem>
-                <ToggleGroupItem value="tensor_flow">
-                  TensorFlow
-                </ToggleGroupItem>
-                <ToggleGroupItem value="deep_learning">
-                  Deep Learning
-                </ToggleGroupItem>
-                <ToggleGroupItem value="computer_vision">
-                  Computer Vision
-                </ToggleGroupItem>
-                <ToggleGroupItem value="flutter">Flutter</ToggleGroupItem>
-              </ToggleGroup>
-
+              <SkillComponent />
               <FormDescription>
                 These will be the skills displayed on your profile.
               </FormDescription>
