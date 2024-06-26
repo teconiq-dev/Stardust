@@ -17,7 +17,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
-import { PlusIcon } from "lucide-react";
+import { PlusIcon, XIcon } from "lucide-react";
 import { languages, speaks, general, technical, Skill } from "./constants";
 import { Badge } from "@/components/ui/badge";
 
@@ -25,11 +25,15 @@ type SelectedSkills = {
   [key: string]: Skill[];
 };
 
-function ComboBoxResponsive({
-  setSelectedSkills,
-}: {
+type ComboBoxProps = {
+  selectedSkills: SelectedSkills;
   setSelectedSkills: React.Dispatch<React.SetStateAction<SelectedSkills>>;
-}) {
+};
+
+function ComboBoxResponsive({
+  selectedSkills,
+  setSelectedSkills,
+}: ComboBoxProps) {
   const [open, setOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -67,8 +71,14 @@ function ComboBoxResponsive({
                 key={skill.value}
                 value={skill.value}
                 onSelect={() => handleAddValue("languages", skill)}
+                className="flex justify-between"
               >
                 {skill.label}
+                {selectedSkills.languages?.includes(skill) && (
+                  <Button variant="destructive" size="sm">
+                    <XIcon size={15} />
+                  </Button>
+                )}
               </CommandItem>
             ))}
           </CommandGroup>
@@ -134,7 +144,7 @@ function ComboBoxResponsive({
           Add skills
         </Button>
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="px-5">
         <div className="mt-4 border-t">
           <StatusList />
         </div>
@@ -145,27 +155,49 @@ function ComboBoxResponsive({
 
 const SkillComponent = () => {
   const [selectedSkills, setSelectedSkills] = useState<SelectedSkills>({});
-  console.log("selectedSkills", selectedSkills);
 
   const DisplaySkills = () => {
+    const handleRemoveSkill = (key: string, skill: Skill) => {
+      setSelectedSkills((prevState: SelectedSkills) => {
+        const keyArray = prevState[key] || [];
+        const index = keyArray.findIndex(
+          (obj: Skill) => obj.value === skill.value,
+        );
+        return {
+          ...prevState,
+          [key]: [...keyArray.slice(0, index), ...keyArray.slice(index + 1)],
+        };
+      });
+    };
     return (
       <div>
         {Object.keys(selectedSkills).map((key) => (
           <div key={key}>
-            <h3 className="text-lg font-semibold py-1 mt-5 mb-1">
-              {key === "languages"
-                ? "Programming languages"
-                : key === "technical"
-                  ? "Technical skills"
-                  : key === "general"
-                    ? "Soft skills"
-                    : key === "speaks"
-                      ? "Spoken languages"
-                      : ""}
-            </h3>
+            {selectedSkills[key].length != 0 && (
+              <h3 className="text-lg font-semibold py-1 mt-5 mb-1">
+                {key === "languages"
+                  ? "Programming languages"
+                  : key === "technical"
+                    ? "Technical skills"
+                    : key === "general"
+                      ? "Soft skills"
+                      : key === "speaks"
+                        ? "Spoken languages"
+                        : ""}
+              </h3>
+            )}
             <div className="flex gap-3">
               {selectedSkills[key].map((skill) => (
-                <Badge key={skill.value}>{skill.label}</Badge>
+                <Badge key={skill.value} className="relative">
+                  {skill.label}
+                  <Button
+                    size="icon"
+                    className="absolute -top-1 -right-2 bg-destructive rounded-full w-4 h-4"
+                    onClick={() => handleRemoveSkill(key, skill)}
+                  >
+                    <XIcon color="white" />
+                  </Button>
+                </Badge>
               ))}
             </div>
           </div>
@@ -175,7 +207,10 @@ const SkillComponent = () => {
   };
   return (
     <div>
-      <ComboBoxResponsive setSelectedSkills={setSelectedSkills} />
+      <ComboBoxResponsive
+        selectedSkills={selectedSkills}
+        setSelectedSkills={setSelectedSkills}
+      />
       <DisplaySkills />
     </div>
   );
