@@ -69,7 +69,7 @@ function SkillSearch({ selectedSkills, setSelectedSkills }: SkillSearchProps) {
         {showList && (
           <>
             <CommandEmpty>No skills found.</CommandEmpty>
-            <CommandGroup heading="Programming languages">
+            <CommandGroup heading="PROGRAMMING LANGUAGES">
               {languages.map((skill) => (
                 <CommandItem
                   key={skill.value}
@@ -87,7 +87,7 @@ function SkillSearch({ selectedSkills, setSelectedSkills }: SkillSearchProps) {
               ))}
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading="Technical skills">
+            <CommandGroup heading="TECHNICAL">
               {technical.map((skill) => (
                 <CommandItem
                   key={skill.value}
@@ -99,7 +99,7 @@ function SkillSearch({ selectedSkills, setSelectedSkills }: SkillSearchProps) {
               ))}
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading="Soft skills">
+            <CommandGroup heading="GENERAL">
               {general.map((skill) => (
                 <CommandItem
                   key={skill.value}
@@ -111,7 +111,7 @@ function SkillSearch({ selectedSkills, setSelectedSkills }: SkillSearchProps) {
               ))}
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading="Spoken languages">
+            <CommandGroup heading="SPOKEN LANGUAGES">
               {speaks.map((skill) => (
                 <CommandItem
                   key={skill.value}
