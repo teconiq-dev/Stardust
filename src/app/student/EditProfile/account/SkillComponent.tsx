@@ -1,6 +1,5 @@
 "use client";
 
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -9,15 +8,10 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "@/components/ui/command";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useState } from "react";
-import { PlusIcon, XIcon } from "lucide-react";
+import { useState, useEffect } from "react";
+import { XIcon } from "lucide-react";
 import { languages, speaks, general, technical, Skill } from "./constants";
 import { Badge } from "@/components/ui/badge";
 
@@ -25,131 +19,113 @@ type SelectedSkills = {
   [key: string]: Skill[];
 };
 
-type ComboBoxProps = {
+type SkillSearchProps = {
   selectedSkills: SelectedSkills;
   setSelectedSkills: React.Dispatch<React.SetStateAction<SelectedSkills>>;
 };
 
-function ComboBoxResponsive({
-  selectedSkills,
-  setSelectedSkills,
-}: ComboBoxProps) {
-  const [open, setOpen] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+function SkillSearch({ selectedSkills, setSelectedSkills }: SkillSearchProps) {
+  const [showList, setShowList] = useState(false);
+  const [inputVal, setInputVal] = useState("");
 
-  function StatusList() {
-    const handleAddValue = (key: string, skill: Skill) => {
-      setSelectedSkills((prevState: SelectedSkills) => {
-        const keyArray = prevState[key] || [];
-        const index = keyArray.findIndex(
-          (obj: Skill) => obj.value === skill.value,
-        );
-        if (index === -1) {
-          // Object doesn't exist, add it
-          return {
-            ...prevState,
-            [key]: [...keyArray, skill],
-          };
-        } else {
-          // Object exists, remove it
-          return {
-            ...prevState,
-            [key]: [...keyArray.slice(0, index), ...keyArray.slice(index + 1)],
-          };
-        }
-      });
-    };
+  useEffect(() => {
+    inputVal.length > 0 ? setShowList(true) : setShowList(false);
+  }, [inputVal]);
+  console.log(inputVal);
 
-    return (
-      <Command>
-        <CommandInput placeholder="Filter status..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Programming languages">
-            {languages.map((skill) => (
-              <CommandItem
-                key={skill.value}
-                value={skill.value}
-                onSelect={() => handleAddValue("languages", skill)}
-                className="flex justify-between"
-              >
-                {skill.label}
-                {selectedSkills.languages?.includes(skill) && (
-                  <Button variant="destructive" size="sm">
-                    <XIcon size={15} />
-                  </Button>
-                )}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Technical skills">
-            {technical.map((skill) => (
-              <CommandItem
-                key={skill.value}
-                value={skill.value}
-                onSelect={() => handleAddValue("technical", skill)}
-              >
-                {skill.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Soft skills">
-            {general.map((skill) => (
-              <CommandItem
-                key={skill.value}
-                value={skill.value}
-                onSelect={() => handleAddValue("general", skill)}
-              >
-                {skill.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Spoken languages">
-            {speaks.map((skill) => (
-              <CommandItem
-                key={skill.value}
-                value={skill.value}
-                onSelect={() => handleAddValue("speaks", skill)}
-              >
-                {skill.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    );
-  }
-
-  if (isDesktop) {
-    return (
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button variant="secondary">
-            <PlusIcon className="mr-2" size={16} />
-            Add skills
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0" align="start">
-          <StatusList />
-        </PopoverContent>
-      </Popover>
-    );
-  }
+  const handleAddSkill = (key: string, skill: Skill) => {
+    setSelectedSkills((prevState: SelectedSkills) => {
+      setInputVal("");
+      const keyArray = prevState[key] || [];
+      const index = keyArray.findIndex(
+        (obj: Skill) => obj.value === skill.value,
+      );
+      if (index === -1) {
+        // Object doesn't exist, add it
+        return {
+          ...prevState,
+          [key]: [...keyArray, skill],
+        };
+      } else {
+        // Object exists, remove it
+        return {
+          ...prevState,
+          [key]: [...keyArray.slice(0, index), ...keyArray.slice(index + 1)],
+        };
+      }
+    });
+  };
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="secondary">
-          <PlusIcon className="mr-2" size={16} />
-          Add skills
-        </Button>
-      </DrawerTrigger>
-      <DrawerContent className="px-5">
-        <div className="mt-4 border-t">
-          <StatusList />
-        </div>
-      </DrawerContent>
-    </Drawer>
+    <Command>
+      <CommandInput
+        placeholder="What skills do you have?"
+        value={inputVal}
+        onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setInputVal(e?.target?.value)
+        }
+      />
+      <CommandList>
+        {showList && (
+          <>
+            <CommandEmpty>No skills found.</CommandEmpty>
+            <CommandGroup heading="Programming languages">
+              {languages.map((skill) => (
+                <CommandItem
+                  key={skill.value}
+                  value={skill.value}
+                  onSelect={() => handleAddSkill("languages", skill)}
+                  className="flex justify-between"
+                >
+                  {skill.label}
+                  {selectedSkills.languages?.includes(skill) && (
+                    <Button variant="destructive" size="sm">
+                      <XIcon size={15} />
+                    </Button>
+                  )}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup heading="Technical skills">
+              {technical.map((skill) => (
+                <CommandItem
+                  key={skill.value}
+                  value={skill.value}
+                  onSelect={() => handleAddSkill("technical", skill)}
+                >
+                  {skill.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup heading="Soft skills">
+              {general.map((skill) => (
+                <CommandItem
+                  key={skill.value}
+                  value={skill.value}
+                  onSelect={() => handleAddSkill("general", skill)}
+                >
+                  {skill.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup heading="Spoken languages">
+              {speaks.map((skill) => (
+                <CommandItem
+                  key={skill.value}
+                  value={skill.value}
+                  onSelect={() => handleAddSkill("speaks", skill)}
+                >
+                  {skill.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </>
+        )}
+      </CommandList>
+    </Command>
   );
 }
 
@@ -219,7 +195,7 @@ const SkillComponent = () => {
   };
   return (
     <div>
-      <ComboBoxResponsive
+      <SkillSearch
         selectedSkills={selectedSkills}
         setSelectedSkills={setSelectedSkills}
       />
