@@ -154,7 +154,18 @@ function ComboBoxResponsive({
 }
 
 const SkillComponent = () => {
-  const [selectedSkills, setSelectedSkills] = useState<SelectedSkills>({});
+  const [selectedSkills, setSelectedSkills] = useState<SelectedSkills>({
+    languages: [{ label: "Python", value: "python" }],
+    technical: [
+      { value: "numpy", label: "NumPy" },
+      { value: "pandas", label: "Pandas" },
+      { value: "matplotlib", label: "Matplotlib" },
+      { value: "scikit-learn", label: "scikit-learn" },
+      { value: "mysql", label: "MySQL" },
+    ],
+    general: [{ value: "communication", label: "Communication" }],
+    speaks: [{ label: "English", value: "english" }],
+  });
 
   const DisplaySkills = () => {
     const handleRemoveSkill = (key: string, skill: Skill) => {
@@ -169,6 +180,7 @@ const SkillComponent = () => {
         };
       });
     };
+
     return (
       <div>
         {Object.keys(selectedSkills).map((key) => (
