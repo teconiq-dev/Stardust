@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import { Metadata } from "next";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+
+export const metadata: Metadata = {
+  title: "Overview",
+  description: "Overview provides the student dashboard.",
+};
 
 export default function ResizableDemo() {
   return (
