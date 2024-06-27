@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/resizable";
 
 export const metadata: Metadata = {
-  title: "Overview",
-  description: "Overview provides the student dashboard.",
+  title: "Dashboard",
+  description:
+    "The Dashboard allows users to view and edit their profile,add their projects,Certificates and see the user notitifications.",
 };
 
 export default function ResizableDemo() {
