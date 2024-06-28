@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Authentication",
+  description: "Signup/Login to access your account and manage your profile",
+};
+
 export default function LoginLayout({
   children,
 }: {

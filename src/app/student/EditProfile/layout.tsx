@@ -5,7 +5,7 @@ import { SidebarNav } from "@/components/sidebar-nav";
 
 export const metadata: Metadata = {
   title: "Forms",
-  description: "Create student profile.",
+  description: "Create and edit student personal profile details,add academic details,add project detais and internship details for creating a student profile.",
 };
 
 const sidebarNavItems = [
