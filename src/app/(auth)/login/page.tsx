@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { UserAuthForm } from "./user-auth-form";
@@ -38,11 +37,6 @@ const slugs = [
   "figma",
 ];
 
-export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
-};
-
 export default function AuthenticationPage() {
   return (
     <div className="container relative h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -54,13 +48,12 @@ export default function AuthenticationPage() {
         </div>
         <div className="relative z-20 mt-auto">
           <div className="w-full flex flex-col justify-center">
-            
-              <IconCloud iconSlugs={slugs} />
-           
+            <IconCloud iconSlugs={slugs} />
 
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;Education is the most powerful weapon which you can use to change the world.&rdquo;
+                &ldquo;Education is the most powerful weapon which you can use
+                to change the world.&rdquo;
               </p>
               <footer className="text-sm">Nelson Mandela</footer>
             </blockquote>
