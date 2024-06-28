@@ -1,5 +1,11 @@
-import { Separator } from "@/components/ui/separator"
-import { AddInt } from "./inter-form"
+import { Separator } from "@/components/ui/separator";
+import { AddInt } from "./inter-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Internships",
+  description: "Create student profile.",
+};
 
 export default function SettingsInternshipPage() {
   return (
@@ -13,5 +19,5 @@ export default function SettingsInternshipPage() {
       <Separator />
       <AddInt />
     </div>
-  )
+  );
 }

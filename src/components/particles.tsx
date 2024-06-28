@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 
 interface MousePosition {
   x: number;
@@ -48,7 +49,7 @@ function hexToRgb(hex: string): number[] {
   return [red, green, blue];
 }
 
-const Particles: React.FC<ParticlesProps> = ({
+export const Particles: React.FC<ParticlesProps> = ({
   className = "",
   quantity = 100,
   staticity = 50,
@@ -267,4 +268,18 @@ const Particles: React.FC<ParticlesProps> = ({
   );
 };
 
-export default Particles;
+function ParticlesWrapper() {
+  const { resolvedTheme } = useTheme();
+  return (
+    <Particles
+      className="absolute inset-0 -z-10 animate-fade-in"
+      quantity={100}
+      vx={1}
+      vy={1}
+      size={1}
+      color={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
+    />
+  );
+}
+
+export default ParticlesWrapper;
