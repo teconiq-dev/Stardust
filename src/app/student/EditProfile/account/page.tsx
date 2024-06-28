@@ -1,5 +1,11 @@
 import { Separator } from "@/components/ui/separator";
 import { AccountForm } from "./account-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Account",
+  description: "Create student profile.",
+};
 
 export default function SettingsAccountPage() {
   return (
@@ -16,4 +22,3 @@ export default function SettingsAccountPage() {
     </div>
   );
 }
-
