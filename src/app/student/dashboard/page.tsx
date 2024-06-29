@@ -218,7 +218,6 @@ export default function Component() {
                 </div>
                 <Calendar
                   numberOfMonths={1}
-                  mode="month"
                   className="p-0 [&_td]:w-10 [&_td]:h-10 [&_th]:w-10 [&_[name=day]]:w-10 [&_[name=day]]:h-10 [&>div]:space-x-0 [&>div]:gap-6"
                 />
               </CardContent>
