@@ -347,7 +347,7 @@ export default function Component() {
               </AccordionItem>
               <AccordionItem value="item-3">
                 <AccordionTrigger>
-                  CV vs. Resume: What's the Difference?
+                  CV vs. Resume: What&apos;s the Difference?
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
