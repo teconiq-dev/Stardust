@@ -1,25 +1,7 @@
 import {
-  Bell as BellIcon,
   FileBadge2 as FileIcon,
   CalendarFold as CalendarIcon,
 } from "lucide-react";
-
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
-import Link from "next/link";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -36,61 +18,11 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
-export default function Component() {
+export default function Dashboard() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="/" prefetch={false}>
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="/login" prefetch={false}>
-                    Login
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Dashboard</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="flex items-center gap-4">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <img
-                    src="/placeholder.svg"
-                    width={36}
-                    height={36}
-                    alt="User Avatar"
-                    className="rounded-full"
-                  />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>My Account</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <BellIcon className="h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </header>
       <main className="flex-1 px-4 py-6 sm:px-6 md:py-8">
         <div className="container mx-auto grid gap-8">
           <section>
@@ -118,9 +50,9 @@ export default function Component() {
                       View
                     </Button>
                     <Link href="/student/EditProfile" prefetch={false}>
-                    <Button variant="outline" size="sm">
-                      Edit
-                    </Button>
+                      <Button variant="outline" size="sm">
+                        Edit
+                      </Button>
                     </Link>
                     <Button variant="outline" size="sm">
                       Download
@@ -142,9 +74,9 @@ export default function Component() {
                       View
                     </Button>
                     <Link href="/student/EditProfile" prefetch={false}>
-                    <Button variant="outline" size="sm">
-                      Edit
-                    </Button>
+                      <Button variant="outline" size="sm">
+                        Edit
+                      </Button>
                     </Link>
                     <Button variant="outline" size="sm">
                       Download
@@ -166,9 +98,9 @@ export default function Component() {
                       View
                     </Button>
                     <Link href="/student/EditProfile" prefetch={false}>
-                    <Button variant="outline" size="sm">
-                      Edit
-                    </Button>
+                      <Button variant="outline" size="sm">
+                        Edit
+                      </Button>
                     </Link>
                     <Button variant="outline" size="sm">
                       Download
@@ -198,7 +130,7 @@ export default function Component() {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between w-full">
                     <div className="text-muted-foreground">
                       <CalendarIcon className="mr-1 inline-block h-4 w-4" />
                       June 15, 2023
@@ -218,8 +150,8 @@ export default function Component() {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <div className="flex items-center justify-between">
-                    <div className="text-muted-foreground">
+                  <div className="flex items-center justify-between w-full">
+                    <div className="text-muted-foreground flex items-center justify-between">
                       <CalendarIcon className="mr-1 inline-block h-4 w-4" />
                       July 1, 2023
                     </div>
@@ -238,7 +170,7 @@ export default function Component() {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between w-full">
                     <div className="text-muted-foreground">
                       <CalendarIcon className="mr-1 inline-block h-4 w-4" />
                       June 30, 2023
@@ -393,36 +325,6 @@ export default function Component() {
           </section>
         </div>
       </main>
-      <footer className="bg-muted px-4 py-6 sm:px-6 md:py-8">
-        <div className="container mx-auto flex items-center justify-between">
-          <p className="text-sm text-muted-foreground">
-            &copy; 2024 Teconiq-dev. All rights reserved.
-          </p>
-          <nav className="flex items-center gap-4">
-            <Link
-              href="/extras/privacypolicy"
-              className="text-sm hover:underline"
-              prefetch={false}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/tos"
-              className="text-sm hover:underline"
-              prefetch={false}
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/contactus"
-              className="text-sm hover:underline"
-              prefetch={false}
-            >
-              Contact Us
-            </Link>
-          </nav>
-        </div>
-      </footer>
     </div>
   );
 }
