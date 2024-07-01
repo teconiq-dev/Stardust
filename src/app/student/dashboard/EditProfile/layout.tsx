@@ -4,19 +4,19 @@ import { SidebarNav } from "@/components/sidebar-nav";
 const sidebarNavItems = [
   {
     title: "Profile",
-    href: "/student/EditProfile",
+    href: "/student/dashboard/EditProfile",
   },
   {
     title: "Account",
-    href: "/student/EditProfile/account",
+    href: "/student/dashboard/EditProfile/account",
   },
   {
     title: "Projects",
-    href: "/student/EditProfile/projects",
+    href: "/student/dashboard/EditProfile/projects",
   },
   {
     title: "Internships",
-    href: "/student/EditProfile/internships",
+    href: "/student/dashboard/EditProfile/internships",
   },
 ];
 

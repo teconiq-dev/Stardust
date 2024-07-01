@@ -9,7 +9,7 @@ import ParticlesWrapper from "../components/particles";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-dvh overflow-hidden bg-gradient-to-br from-zinc-900/40 to-neutral-900/70">
-      <nav className="my-16 absolute top-0 right-0 m-4 animate-fade-in">
+      <nav className="my-16 absolute top-0 right-0 m-4 animate-fade-in z-10">
         <ModeToggle />
       </nav>
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
@@ -19,12 +19,12 @@ export default function Home() {
       </Label>
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
-      <div className="my-16 text-center animate-fade-in">
+      <div className="my-16 text-center animate-fade-in z-10">
         <Link href="/login">
           <Button>Get Started</Button>
         </Link>
       </div>
-      <Globe className="z-[-1]" />
+      <Globe className="z-[-4]" />
     </div>
   );
 }

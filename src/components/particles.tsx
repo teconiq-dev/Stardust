@@ -272,11 +272,12 @@ function ParticlesWrapper() {
   const { resolvedTheme } = useTheme();
   return (
     <Particles
-      className="absolute inset-0 -z-10 animate-fade-in"
+      className="absolute inset-0 -z-2 animate-fade-in"
       quantity={100}
-      vx={1}
-      vy={1}
+      vx={0.3}
+      vy={0.3}
       size={1}
+      ease={10}
       color={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
     />
   );
