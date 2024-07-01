@@ -117,9 +117,11 @@ export default function Component() {
                     <Button variant="outline" size="sm">
                       View
                     </Button>
+                    <Link href="/student/EditProfile" prefetch={false}>
                     <Button variant="outline" size="sm">
                       Edit
                     </Button>
+                    </Link>
                     <Button variant="outline" size="sm">
                       Download
                     </Button>
@@ -139,9 +141,11 @@ export default function Component() {
                     <Button variant="outline" size="sm">
                       View
                     </Button>
+                    <Link href="/student/EditProfile" prefetch={false}>
                     <Button variant="outline" size="sm">
                       Edit
                     </Button>
+                    </Link>
                     <Button variant="outline" size="sm">
                       Download
                     </Button>
@@ -161,9 +165,11 @@ export default function Component() {
                     <Button variant="outline" size="sm">
                       View
                     </Button>
+                    <Link href="/student/EditProfile" prefetch={false}>
                     <Button variant="outline" size="sm">
                       Edit
                     </Button>
+                    </Link>
                     <Button variant="outline" size="sm">
                       Download
                     </Button>
