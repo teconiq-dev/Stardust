@@ -1,251 +1,428 @@
-"use client"
-
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useState } from "react"
-import { Separator } from "@/components/ui/separator"
 import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
+  Bell as BellIcon,
+  FileBadge2 as FileIcon,
+  CalendarFold as CalendarIcon,
+} from "lucide-react";
+
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export default function Component() {
-  const [activeTab, setActiveTab] = useState("student-resume")
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] lg:grid-cols-[240px_1fr] gap-6 p-4 md:p-6">
-      <div className="hidden md:block">
-        <div className="flex flex-col gap-4 items-start py-2">
-          <Link href="/student/EditProfile">
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Edit Profile
-          </Button>
-          </Link>
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Settings
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Logout
-          </Button>
+    <div className="flex min-h-screen flex-col bg-background">
+      <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
+        <div className="container mx-auto flex items-center justify-between">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/" prefetch={false}>
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/login" prefetch={false}>
+                    Login
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Resume Viewer</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <div className="flex items-center gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="rounded-full">
+                  <img
+                    src="/placeholder.svg"
+                    width={36}
+                    height={36}
+                    alt="User Avatar"
+                    className="rounded-full"
+                  />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>My Account</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <BellIcon className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="col-span-1 md:col-span-2 lg:col-span-3">
-          <TabsList className="grid w-full grid-cols-3 bg-muted rounded-md mb-4">
-            <TabsTrigger
-              value="student-resume"
-              className={`px-4 py-2 rounded-md transition-colors ${
-                activeTab === "student-resume" ? "bg-primary text-primary-foreground" : "hover:bg-muted/50"
-              }`}
-            >
-              Student Resume
-            </TabsTrigger>
-            <TabsTrigger
-              value="placement-announcements"
-              className={`px-4 py-2 rounded-md transition-colors ${
-                activeTab === "placement-announcements" ? "bg-primary text-primary-foreground" : "hover:bg-muted/50"
-              }`}
-            >
-              Placement Announcements
-            </TabsTrigger>
-            <TabsTrigger
-              value="upcoming-events"
-              className={`px-4 py-2 rounded-md transition-colors ${
-                activeTab === "upcoming-events" ? "bg-primary text-primary-foreground" : "hover:bg-muted/50"
-              }`}
-            >
-              Upcoming Events
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="student-resume">
-          <Card className="flex flex-col h-full">
-              <CardHeader className="bg-primary text-primary-foreground p-4 rounded-t-md">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-semibold">Student Resume</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="bg-primary-foreground text-primary hover:bg-primary/90 transition-colors"
-                  >
-                    Download
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent className="flex-1 overflow-auto p-4">
-                <div className="grid gap-6">
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Name</div>
-                    <div className="text-lg font-semibold">Jude Saju</div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Email</div>
-                    <div>jude@vazhathottam.com</div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Phone</div>
-                    <div>+91 8714465131</div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Education</div>
-                    <div>
-                      Masters in Artificial Intelligence and Machine Learning, University of Pathalam
-                      <br />
-                      2021 - 2026
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Skills</div>
-                    <div>React, Typescript, Linuxfunda, Git, </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Experience</div>
-                    <div>
-                      ML Intern, Ajalabs.ai.
-                      <br />
-                      June 2024 - November 2024
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Objective</div>
-                    <div>
-                      To secure a challenging position as a Vazha where I can utilize my technical skills
-                      and experience to contribute to the success of the vazhathottam.
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Achievements</div>
-                    <div>
-                      - Developed a responsive web application using React, Node.js, and SQL
-                      <br />- Created development environment cloning system using React 
-                      <br />- Created website for college
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="text-sm font-medium">Certifications</div>
-                    <div>
-                      - Google Cloud certification
-                      <br />- Github students pack
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="placement-announcements">
-            <Card className="flex flex-col h-full">
-              <CardHeader className="bg-primary text-primary-foreground p-4 rounded-t-md">
-                <h2 className="text-xl font-semibold">Placement Announcements</h2>
-              </CardHeader>
-              <CardContent className="flex-1 overflow-auto p-4">
-                <div className="grid gap-4">
-                  <Card className="border-2 border-primary rounded-md">
-                    <CardHeader className="bg-primary/10 p-4 rounded-t-md">
-                      <CardTitle className="text-primary">New Company Registered</CardTitle>
-                      <CardDescription>
-                        Ajalabs Inc. has been registered for the upcoming placement season.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-4">
-                      <p>
-                        Acme Inc., a initiative startup, has registered for the upcoming placement season.
-                        Students are encouraged to prepare their resumes and apply for the available positions.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card className="border-2 border-primary rounded-md">
-                    <CardHeader className="bg-primary/10 p-4 rounded-t-md">
-                      <CardTitle className="text-primary">Resume Submission Deadline</CardTitle>
-                      <CardDescription>The deadline for submitting resumes is June 15th.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-4">
-                      <p>
-                        The deadline for submitting resumes for the upcoming placement season is June 15th. Students are
-                        advised to ensure their resumes are up-to-date and submitted on time.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card className="border-2 border-primary rounded-md">
-                    <CardHeader className="bg-primary/10 p-4 rounded-t-md">
-                      <CardTitle className="text-primary">Placement Orientation Session</CardTitle>
-                      <CardDescription>A placement orientation session will be held on July 13th.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-4">
-                      <p>
-                        A placement orientation session will be held on July 13th to provide students with information
-                        about the placement process, available opportunities, and tips for success. Attendance is highly
-                        recommended.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="upcoming-events">
-            <Card className="flex flex-col h-full">
-              <CardHeader className="bg-primary text-primary-foreground p-4 rounded-t-md">
-                <h2 className="text-xl font-semibold">Upcoming Events</h2>
-              </CardHeader>
-              <CardContent className="flex-1 overflow-auto p-4">
-                <div className="bg-yellow-100 p-4 rounded-md mb-4">
-                  <div className="flex items-center">
-                    <CircleAlertIcon className="w-5 h-5 mr-2 text-yellow-500" />
-                    <p className="text-yellow-700 font-medium">
-                      A new event has been added to the calendar. Check it out!
+      </header>
+      <main className="flex-1 px-4 py-6 sm:px-6 md:py-8">
+        <div className="container mx-auto grid gap-8">
+          <section>
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">Resume Viewer</h2>
+                <p className="text-muted-foreground">
+                  Manage your resume and application materials.
+                </p>
+              </div>
+              <Button>Upload Resume</Button>
+            </div>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center gap-4 p-6">
+                  <FileIcon className="h-12 w-12 text-primary" />
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold">Resume 1</h3>
+                    <p className="text-muted-foreground">
+                      Last updated: May 15, 2023
                     </p>
                   </div>
-                </div>
-                <Calendar
-                  numberOfMonths={1}
-                  className="p-0 [&_td]:w-10 [&_td]:h-10 [&_th]:w-10 [&_[name=day]]:w-10 [&_[name=day]]:h-10 [&>div]:space-x-0 [&>div]:gap-6"
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">
+                      View
+                    </Button>
+                    <Link href="/student/EditProfile" prefetch={false}>
+                    <Button variant="outline" size="sm">
+                      Edit
+                    </Button>
+                    </Link>
+                    <Button variant="outline" size="sm">
+                      Download
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center gap-4 p-6">
+                  <FileIcon className="h-12 w-12 text-primary" />
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold">Resume 2</h3>
+                    <p className="text-muted-foreground">
+                      Last updated: April 20, 2023
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">
+                      View
+                    </Button>
+                    <Link href="/student/EditProfile" prefetch={false}>
+                    <Button variant="outline" size="sm">
+                      Edit
+                    </Button>
+                    </Link>
+                    <Button variant="outline" size="sm">
+                      Download
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center gap-4 p-6">
+                  <FileIcon className="h-12 w-12 text-primary" />
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold">Resume 3</h3>
+                    <p className="text-muted-foreground">
+                      Last updated: March 10, 2023
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">
+                      View
+                    </Button>
+                    <Link href="/student/EditProfile" prefetch={false}>
+                    <Button variant="outline" size="sm">
+                      Edit
+                    </Button>
+                    </Link>
+                    <Button variant="outline" size="sm">
+                      Download
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+          <section>
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">Placement Announcements</h2>
+                <p className="text-muted-foreground">
+                  Stay up-to-date with the latest placement opportunities.
+                </p>
+              </div>
+              <Button variant="outline">View All</Button>
+            </div>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Amazon Campus Placement</CardTitle>
+                  <CardDescription>
+                    Amazon is conducting on-campus interviews for software
+                    engineering roles.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <div className="flex items-center justify-between">
+                    <div className="text-muted-foreground">
+                      <CalendarIcon className="mr-1 inline-block h-4 w-4" />
+                      June 15, 2023
+                    </div>
+                    <Button variant="outline" size="sm">
+                      Apply Now
+                    </Button>
+                  </div>
+                </CardFooter>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Microsoft Internship Program</CardTitle>
+                  <CardDescription>
+                    Microsoft is offering summer internships for computer
+                    science students.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <div className="flex items-center justify-between">
+                    <div className="text-muted-foreground">
+                      <CalendarIcon className="mr-1 inline-block h-4 w-4" />
+                      July 1, 2023
+                    </div>
+                    <Button variant="outline" size="sm">
+                      Apply Now
+                    </Button>
+                  </div>
+                </CardFooter>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Google Developer Student Club</CardTitle>
+                  <CardDescription>
+                    Google is organizing a workshop on building web
+                    applications.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <div className="flex items-center justify-between">
+                    <div className="text-muted-foreground">
+                      <CalendarIcon className="mr-1 inline-block h-4 w-4" />
+                      June 30, 2023
+                    </div>
+                    <Button variant="outline" size="sm">
+                      Register
+                    </Button>
+                  </div>
+                </CardFooter>
+              </Card>
+            </div>
+          </section>
+          <section>
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">Upcoming Events</h2>
+                <p className="text-muted-foreground">
+                  View the calendar of upcoming placement-related events.
+                </p>
+              </div>
+              <Button variant="outline">View Calendar</Button>
+            </div>
+            <div className="mt-6">
+              <Card>
+                <CardContent>
+                  <Calendar className="w-full" />
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+          <section>
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">Interview Preparation</h2>
+                <p className="text-muted-foreground">
+                  Learn tips and strategies to ace your interviews.
+                </p>
+              </div>
+            </div>
+            <Accordion type="single" collapsible className="mt-6">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                  How to Get Selected on Interviews
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p>
+                      To increase your chances of getting selected for
+                      interviews, focus on the following:
+                    </p>
+                    <ul className="list-disc space-y-2 pl-6">
+                      <li>
+                        Tailor your resume and cover letter to the specific job
+                        requirements.
+                      </li>
+                      <li>
+                        Practice common interview questions and prepare
+                        thoughtful responses.
+                      </li>
+                      <li>
+                        Research the company and industry to demonstrate your
+                        knowledge and interest.
+                      </li>
+                      <li>
+                        Develop a strong understanding of your own skills,
+                        experiences, and career goals.
+                      </li>
+                      <li>
+                        Dress professionally and arrive early for the interview.
+                      </li>
+                      <li>
+                        Follow up with the interviewer after the meeting to
+                        express your continued interest.
+                      </li>
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>How to Design a Resume</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p>Here are some tips for designing an effective resume:</p>
+                    <ul className="list-disc space-y-2 pl-6">
+                      <li>
+                        Use a clean, easy-to-read layout with clear section
+                        headings.
+                      </li>
+                      <li>
+                        Highlight your most relevant skills, experiences, and
+                        achievements.
+                      </li>
+                      <li>
+                        Tailor the content to the specific job you are applying
+                        for.
+                      </li>
+                      <li>
+                        Use concise, action-oriented language to describe your
+                        responsibilities and accomplishments.
+                      </li>
+                      <li>
+                        Include quantifiable results and metrics to demonstrate
+                        your impact.
+                      </li>
+                      <li>
+                        Proofread carefully to ensure there are no spelling or
+                        grammatical errors.
+                      </li>
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                  CV vs. Resume: What&apos;s the Difference?
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p>
+                      The main differences between a CV (Curriculum Vitae) and a
+                      resume are:
+                    </p>
+                    <ul className="list-disc space-y-2 pl-6">
+                      <li>
+                        Length: A CV is typically longer and more detailed,
+                        while a resume is a concise summary.
+                      </li>
+                      <li>
+                        Purpose: A CV is used for academic or research-oriented
+                        roles, while a resume is used for most other job
+                        applications.
+                      </li>
+                      <li>
+                        Content: A CV includes a comprehensive list of your
+                        academic and professional achievements, while a resume
+                        focuses on your most relevant skills and experiences.
+                      </li>
+                      <li>
+                        Formatting: A CV has a more formal, structured layout,
+                        while a resume is more flexible in its design.
+                      </li>
+                      <li>
+                        Audience: A CV is typically used for international or
+                        academic job applications, while a resume is more
+                        commonly used in the United States and other countries.
+                      </li>
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </section>
+        </div>
+      </main>
+      <footer className="bg-muted px-4 py-6 sm:px-6 md:py-8">
+        <div className="container mx-auto flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">
+            &copy; 2024 Teconiq-dev. All rights reserved.
+          </p>
+          <nav className="flex items-center gap-4">
+            <Link
+              href="/extras/privacypolicy"
+              className="text-sm hover:underline"
+              prefetch={false}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/tos"
+              className="text-sm hover:underline"
+              prefetch={false}
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/contactus"
+              className="text-sm hover:underline"
+              prefetch={false}
+            >
+              Contact Us
+            </Link>
+          </nav>
+        </div>
+      </footer>
     </div>
-  )
-}
-
-function CircleAlertIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <line x1="12" x2="12" y1="8" y2="12" />
-      <line x1="12" x2="12.01" y1="16" y2="16" />
-    </svg>
-  )
+  );
 }
