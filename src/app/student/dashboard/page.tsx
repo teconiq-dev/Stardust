@@ -49,7 +49,10 @@ export default function Dashboard() {
                     <Button variant="outline" size="sm">
                       View
                     </Button>
-                    <Link href="/student/EditProfile" prefetch={false}>
+                    <Link
+                      href="/student/dashboard/EditProfile"
+                      prefetch={false}
+                    >
                       <Button variant="outline" size="sm">
                         Edit
                       </Button>
@@ -73,7 +76,10 @@ export default function Dashboard() {
                     <Button variant="outline" size="sm">
                       View
                     </Button>
-                    <Link href="/student/EditProfile" prefetch={false}>
+                    <Link
+                      href="/student/dashboard/EditProfile"
+                      prefetch={false}
+                    >
                       <Button variant="outline" size="sm">
                         Edit
                       </Button>
@@ -97,7 +103,10 @@ export default function Dashboard() {
                     <Button variant="outline" size="sm">
                       View
                     </Button>
-                    <Link href="/student/EditProfile" prefetch={false}>
+                    <Link
+                      href="/student/dashboard/EditProfile"
+                      prefetch={false}
+                    >
                       <Button variant="outline" size="sm">
                         Edit
                       </Button>

@@ -13,9 +13,8 @@ import Link from "next/link";
 
 const PageNav = () => {
   const pathname = usePathname();
-  const path = pathname
-    .split("/")
-    .filter((p) => p !== "" && p !== "student")[0];
+  const path = pathname.split("/").filter((p) => p !== "" && p !== "student");
+  const currentPath = path[path.length - 1];
 
   return (
     <Breadcrumb>
@@ -29,31 +28,33 @@ const PageNav = () => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          {path !== "login" ? (
-            <Link href="/login" prefetch={false}>
-              <BreadcrumbLink>Login</BreadcrumbLink>
-            </Link>
+          {currentPath !== "login" ? (
+            <BreadcrumbLink asChild>
+              <Link href="/login" prefetch={false}>
+                Login
+              </Link>
+            </BreadcrumbLink>
           ) : (
             <BreadcrumbPage>Login</BreadcrumbPage>
           )}
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          {path !== "dashboard" ? (
-            <Link href="/student/dashboard" prefetch={false}>
-              <BreadcrumbLink>Dashboard</BreadcrumbLink>
-            </Link>
+          {currentPath !== "dashboard" ? (
+            <BreadcrumbLink asChild>
+              <Link href="/student/dashboard" prefetch={false}>
+                Dashboard
+              </Link>
+            </BreadcrumbLink>
           ) : (
             <BreadcrumbPage>Dashboard</BreadcrumbPage>
           )}
         </BreadcrumbItem>
-        {path === "EditProfile" && (
+        {currentPath === "EditProfile" && (
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <Link href="/student/EditProfile" prefetch={false}>
-                <BreadcrumbPage>Edit Profile</BreadcrumbPage>
-              </Link>
+              <BreadcrumbPage>Edit Profile</BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}
