@@ -7,8 +7,9 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { BellIcon, User } from "lucide-react";
+import { User } from "lucide-react";
 import PageNav from "@/components/page-nav";
+import { NotificationSheet } from "@/components/notification-sheet";
 
 export default function StudentLayout({
   children,
@@ -34,9 +35,7 @@ export default function StudentLayout({
                 <DropdownMenuItem>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <BellIcon />
-            </Button>
+            <NotificationSheet />
           </div>
         </div>
       </header>
