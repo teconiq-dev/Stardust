@@ -64,6 +64,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               Sign In 
             </Button>
             </Link>
+            <Link href="organization/lookup" className="grid gap-2">
+            <Button disabled={isLoading}>
+              {isLoading && (
+                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+              )}
+              Lookup Sign In 
+            </Button>
+            </Link>
+            
           </div>
         </form>
       </div>
