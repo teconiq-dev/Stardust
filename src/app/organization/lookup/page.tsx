@@ -18,10 +18,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   ListFilter as FilterIcon,
   Hand as HandIcon,
-  Star as LogInIcon,
   Pin as MapPinIcon,
-  MoonStar as MoonIcon,
-  SunMedium as SunIcon,
   PhoneCall as PhoneIcon,
   UserRoundSearch as SearchIcon,
   BookOpen as BookIcon,
@@ -29,10 +26,6 @@ import {
 } from "lucide-react";
 
 export default function Component() {
-  const [theme, setTheme] = useState("dark");
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
   const students = [
     {
       name: "Alice Chen",
@@ -150,204 +143,61 @@ export default function Component() {
   const handleAddEvent = (event: any) => {
     setEvents([...events, event]);
   };
-  
+
   return (
-    <div
-      className={`min-h-screen p-4 transition-colors duration-300 ${
-        theme === "light"
-          ? "bg-gray-100 text-gray-900"
-          : "bg-gray-900 text-gray-100"
-      }`}
-    >
-      <header
-        className={`flex items-center justify-between p-4 shadow-md transition-colors duration-300 ${
-          theme === "light"
-            ? "bg-white text-gray-900"
-            : "bg-gray-800 text-gray-100"
-        }`}
-      >
-        <div className="flex items-center">
-          <LogInIcon className="w-6 h-6 mr-2" />
-          <h1 className="text-xl font-bold">StarDust</h1>
-        </div>
-        <nav className="flex space-x-4">
-          <Link
-            href="#"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-gray-600 hover:text-gray-900"
-                : "text-gray-400 hover:text-gray-100"
-            }`}
-            prefetch={false}
-          >
-            Home
-          </Link>
-          <Link
-            href="#"
-            className={`font-semibold transition-colors duration-300 ${
-              theme === "light"
-                ? "text-gray-900 hover:text-black"
-                : "text-gray-100 hover:text-white"
-            }`}
-            prefetch={false}
-          >
-            Students
-          </Link>
-          <Link
-            href="#"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-gray-600 hover:text-gray-900"
-                : "text-gray-400 hover:text-gray-100"
-            }`}
-            prefetch={false}
-          >
-            Events
-          </Link>
-          <Link
-            href="#"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-gray-600 hover:text-gray-900"
-                : "text-gray-400 hover:text-gray-100"
-            }`}
-            prefetch={false}
-          >
-            Feedback
-          </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="ml-auto rounded-full"
-            onClick={toggleTheme}
-          >
-            {theme === "light" ? (
-              <MoonIcon className="w-5 h-5" />
-            ) : (
-              <SunIcon className="w-5 h-5" />
-            )}
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-        </nav>
-      </header>
-      <main
-        className={`max-w-6xl mx-auto mt-8 transition-colors duration-300 ${
-          theme === "light" ? "text-gray-900" : "text-gray-100"
-        }`}
-      >
+    <div className="min-h-screen p-4 transition-colors duration-300">
+      <main className="max-w-6xl mx-auto mt-8 transition-colors duration-300">
         <div className="mb-6">
           <h2 className="text-3xl font-bold">Students</h2>
-          <p
-            className={`transition-colors duration-300 ${
-              theme === "light" ? "text-gray-600" : "text-gray-400"
-            }`}
-          >
+          <p className="transition-colors duration-300">
             We&apos;re here to help you find the right talent for your team
           </p>
         </div>
-        <div
-          className={`relative mb-6 transition-colors duration-300 ${
-            theme === "light" ? "text-gray-400" : "text-gray-500"
-          }`}
-        >
+        <div className="relative mb-6 transition-colors duration-300">
           <SearchIcon className="absolute left-3 top-3 w-5 h-5" />
           <Input
             type="search"
             placeholder="Search students"
-            className={`w-full pl-10 pr-4 py-2 border rounded-md transition-colors duration-300 ${
-              theme === "light"
-                ? "bg-white text-gray-900 border-gray-300 focus:ring-primary focus:border-primary"
-                : "bg-gray-800 text-gray-100 border-gray-700 focus:ring-primary focus:border-primary"
-            }`}
+            className="w-full pl-10 pr-4 py-2 border rounded-md transition-colors duration-300"
           />
         </div>
         <div className="flex space-x-4 mb-6">
-          <Button
-            variant="outline"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-white border-black hover:bg-gray-900" // Changed colors for better visibility in light mode
-                : "text-gray-100 border-gray-700 hover:bg-gray-800"
-            }`}
-          >
+          <Button variant="outline" className="transition-colors duration-300">
             All students
           </Button>
-          <Button
-            variant="outline"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-white border-black hover:bg-gray-900" // Changed colors for better visibility in light mode
-                : "text-gray-100 border-gray-700 hover:bg-gray-800"
-            }`}
-          >
+          <Button variant="outline" className="transition-colors duration-300">
             New students
           </Button>
-          <Button
-            variant="outline"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-white border-black hover:bg-gray-900" // Changed colors for better visibility in light mode
-                : "text-gray-100 border-gray-700 hover:bg-gray-800"
-            }`}
-          >
+          <Button variant="outline" className="transition-colors duration-300">
             Hired students
           </Button>
-          <Button
-            variant="outline"
-            className={`transition-colors duration-300 ${
-              theme === "light"
-                ? "text-white border-black hover:bg-gray-900" // Changed colors for better visibility in light mode
-                : "text-gray-100 border-gray-700 hover:bg-gray-800"
-            }`}
-          >
+          <Button variant="outline" className="transition-colors duration-300">
             <FilterIcon className="w-5 h-5 mr-2" />
             Filter
           </Button>
         </div>
-        <div
-          className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 transition-colors duration-300 ${
-            theme === "light" ? "text-gray-900" : "text-gray-100"
-          }`}
-        >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 transition-colors duration-300">
           {students.map((student, index) => (
             <HoverCard key={index}>
               <HoverCardTrigger asChild>
                 <Link
                   href="/student/resume"
-                  className={`block p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow transition-colors duration-300 ${
-                    theme === "light"
-                      ? "bg-white text-gray-900"
-                      : "bg-gray-800 text-gray-100"
-                  }`}
+                  className="block p-4 rounded-lg transition-colors shadow-primary shadow-md hover:shadow-lg duration-300"
                   prefetch={false}
                 >
                   <div className="mb-2">
                     <h3 className="text-lg font-semibold">{student.name}</h3>
-                    <p
-                      className={`transition-colors duration-300 ${
-                        theme === "light" ? "text-gray-600" : "text-gray-400"
-                      }`}
-                    >
+                    <p className="transition-colors duration-300">
                       {student.email}
                     </p>
                   </div>
-                  <div
-                    className={`text-sm transition-colors duration-300 ${
-                      theme === "light" ? "text-gray-500" : "text-gray-400"
-                    }`}
-                  >
+                  <div className="text-sm transition-colors duration-300">
                     <p>Skills: {student.skills}</p>
                     <p>Year: {student.year}</p>
                   </div>
                 </Link>
               </HoverCardTrigger>
-              <HoverCardContent
-                className={`w-80 transition-colors duration-300 ${
-                  theme === "light"
-                    ? "bg-white text-gray-900"
-                    : "bg-gray-800 text-gray-100"
-                }`}
-              >
+              <HoverCardContent className="w-80 transition-colors duration-300">
                 <div className="flex justify-between space-x-4">
                   <Avatar>
                     <AvatarImage src="/placeholder-user.jpg" />
@@ -360,80 +210,36 @@ export default function Component() {
                   </Avatar>
                   <div className="space-y-1">
                     <h4 className="text-sm font-semibold">{student.name}</h4>
-                    <p
-                      className={`text-sm transition-colors duration-300 ${
-                        theme === "light" ? "text-gray-600" : "text-gray-400"
-                      }`}
-                    >
+                    <p className="text-sm transition-colors duration-300">
                       {student.email}
                     </p>
                     <div className="flex items-center pt-2">
-                      <HandIcon
-                        className={`mr-2 h-4 w-4 opacity-70 transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      />
-                      <span
-                        className={`text-xs transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      >
+                      <HandIcon className="mr-2 h-4 w-4 opacity-70 transition-colors duration-300" />
+                      <span className="text-xs transition-colors duration-300">
                         {student.skills}
                       </span>
                     </div>
                     <div className="flex items-center pt-2">
-                      <MapPinIcon
-                        className={`mr-2 h-4 w-4 opacity-70 transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      />
-                      <span
-                        className={`text-xs transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      >
+                      <MapPinIcon className="mr-2 h-4 w-4 opacity-70 transition-colors duration-300" />
+                      <span className="text-xs transition-colors duration-300">
                         {student.location}
                       </span>
                     </div>
                     <div className="flex items-center pt-2">
-                      <PhoneIcon
-                        className={`mr-2 h-4 w-4 opacity-70 transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      />
-                      <span
-                        className={`text-xs transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      >
+                      <PhoneIcon className="mr-2 h-4 w-4 opacity-70 transition-colors duration-300" />
+                      <span className="text-xs transition-colors duration-300">
                         {student.phone}
                       </span>
                     </div>
                     <div className="flex items-center pt-2">
-                      <BookIcon
-                        className={`mr-2 h-4 w-4 opacity-70 transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      />
-                      <span
-                        className={`text-xs transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      >
+                      <BookIcon className="mr-2 h-4 w-4 opacity-70 transition-colors duration-300" />
+                      <span className="text-xs transition-colors duration-300">
                         {student.course}
                       </span>
                     </div>
                     <div className="flex items-center pt-2">
-                      <SignatureIcon
-                        className={`mr-2 h-4 w-4 opacity-70 transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      />
-                      <span
-                        className={`text-xs transition-colors duration-300 ${
-                          theme === "light" ? "text-gray-500" : "text-gray-400"
-                        }`}
-                      >
+                      <SignatureIcon className="mr-2 h-4 w-4 opacity-70 transition-colors duration-300" />
+                      <span className="text-xs transition-colors duration-300">
                         {student.year}
                       </span>
                     </div>
@@ -447,4 +253,3 @@ export default function Component() {
     </div>
   );
 }
-
