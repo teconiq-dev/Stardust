@@ -37,12 +37,7 @@ export default function LookupLayout({
         </div>
         <nav className="flex items-center space-x-4">
           {navLink.map((link, key) => (
-            <Link
-              href={link.href}
-              className="transition-colors duration-300"
-              prefetch={false}
-              key={key}
-            >
+            <Link href={link.href} prefetch={false} key={key}>
               <Button
                 variant="outline"
                 className="hover:text-primary"

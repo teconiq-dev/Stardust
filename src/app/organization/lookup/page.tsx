@@ -14,7 +14,7 @@ import {
   HoverCardTrigger,
   HoverCardContent,
 } from "@/components/ui/hover-card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   ListFilter as FilterIcon,
   Hand as HandIcon,
@@ -24,6 +24,13 @@ import {
   BookOpen as BookIcon,
   Signature as SignatureIcon,
 } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Component() {
   const students = [
@@ -161,17 +168,13 @@ export default function Component() {
             className="w-full pl-10 pr-4 py-2 border rounded-md transition-colors duration-300"
           />
         </div>
-        <div className="flex space-x-4 mb-6">
-          <Button variant="outline" className="transition-colors duration-300">
-            All students
-          </Button>
-          <Button variant="outline" className="transition-colors duration-300">
-            New students
-          </Button>
-          <Button variant="outline" className="transition-colors duration-300">
-            Hired students
-          </Button>
-          <Button variant="outline" className="transition-colors duration-300">
+        <div className="flex gap-4 mb-6 flex-wrap md:justify-between">
+          <div className="flex gap-2 md:gap-3 flex-wrap">
+            <Button variant="outline">All students</Button>
+            <Button variant="outline">New students</Button>
+            <Button variant="outline">Hired students</Button>
+          </div>
+          <Button variant="outline">
             <FilterIcon className="w-5 h-5 mr-2" />
             Filter
           </Button>
@@ -180,27 +183,23 @@ export default function Component() {
           {students.map((student, index) => (
             <HoverCard key={index}>
               <HoverCardTrigger asChild>
-                <Link
-                  href="/student/resume"
-                  className="block p-4 rounded-lg transition-colors shadow-primary shadow-md hover:shadow-lg duration-300"
-                  prefetch={false}
-                >
-                  <div className="mb-2">
-                    <h3 className="text-lg font-semibold">{student.name}</h3>
-                    <p className="transition-colors duration-300">
-                      {student.email}
-                    </p>
-                  </div>
-                  <div className="text-sm transition-colors duration-300">
-                    <p>Skills: {student.skills}</p>
-                    <p>Year: {student.year}</p>
-                  </div>
+                <Link href="/student/resume" prefetch={false}>
+                  <Card className="rounded-lg shadow-md hover:shadow-lg hover:border-primary flex flex-col">
+                    <CardHeader>
+                      <CardTitle>{student.name}</CardTitle>
+                      <CardDescription>{student.email}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="text-sm">
+                      <p>Skills: {student.skills}</p>
+                      <p>Year: {student.year}</p>
+                    </CardContent>
+                  </Card>
                 </Link>
               </HoverCardTrigger>
               <HoverCardContent className="w-80 transition-colors duration-300">
                 <div className="flex justify-between space-x-4">
                   <Avatar>
-                    <AvatarImage src="/placeholder-user.jpg" />
+                    {/* <AvatarImage src="/placeholder-user.jpg" /> */}
                     <AvatarFallback>
                       {student.name
                         .split(" ")
