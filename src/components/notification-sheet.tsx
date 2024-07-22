@@ -13,13 +13,7 @@ import {
 import { Button } from "./ui/button";
 import { Bell, Check, ExternalLink } from "lucide-react";
 import { ScrollArea } from "./ui/scroll-area";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardTitle,
-} from "./ui/card";
+import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 import {
   Tooltip,
   TooltipContent,
@@ -55,7 +49,7 @@ const notifications: Notification[] = [
 
 // This component display read and unread notifications
 export const NotificationSheet = () => {
-  const [unread, setUnread] = useState<Notification[]>(notifications);
+  const [unread, setUnread] = useState(notifications);
   const [read, setRead] = useState<Notification[]>([]);
 
   function handleMarkAsRead(notification: Notification) {
@@ -84,7 +78,7 @@ export const NotificationSheet = () => {
               : "No new notifications"}
           </SheetDescription>
         </SheetHeader>
-        <ScrollArea className="h-3/4 p-2">
+        <ScrollArea className="h-3/4 p-3">
           {unread.map((notification: Notification) => (
             <Card key={notification.id} className="pt-3 pl-2 border-2 mb-2">
               <CardTitle>{notification.head}</CardTitle>
@@ -127,39 +121,37 @@ export const NotificationSheet = () => {
             </Card>
           ))}
 
-          {read.map((notification: Notification) => (
-            <>
-              <SheetDescription className="mt-6 mb-2">
-                Viewed notifications
-              </SheetDescription>
-              <Card
-                key={notification.id}
-                className="pt-3 pl-2 border-2 mb-2 bg-secondary"
-              >
-                <CardTitle>{notification.head}</CardTitle>
-                <CardContent className="mt-2 text-muted-foreground">
-                  {notification.body}
-                </CardContent>
-                <CardFooter className="flex justify-end items-center gap-4">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          size="icon"
-                          variant="outline"
-                          className="h-6 w-6 p-1"
-                        >
-                          <ExternalLink />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent className="bg-secondary text-secondary-foreground">
-                        View details
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </CardFooter>
-              </Card>
-            </>
+          <SheetDescription className="mt-6 mb-2">
+            Viewed notifications
+          </SheetDescription>
+          {read.map((notification) => (
+            <Card
+              key={notification.id}
+              className="pt-3 pl-2 border-2 mb-2 bg-secondary"
+            >
+              <CardTitle>{notification.head}</CardTitle>
+              <CardContent className="mt-2 text-muted-foreground">
+                {notification.body}
+              </CardContent>
+              <CardFooter className="flex justify-end items-center gap-4">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="h-6 w-6 p-1"
+                      >
+                        <ExternalLink />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-secondary text-secondary-foreground">
+                      View details
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </CardFooter>
+            </Card>
           ))}
         </ScrollArea>
         <SheetFooter>

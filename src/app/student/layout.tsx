@@ -17,7 +17,7 @@ export default function StudentLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="w-screen">
+    <section>
       <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
         <div className="mx-auto flex items-center justify-between">
           <PageNav />
