@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
 
-
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
@@ -29,7 +28,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         <form onSubmit={onSubmit}>
           <div className="grid gap-2">
             <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="userID">
+              <Label className="sr-only" htmlFor="userID">
                 Student ID
               </Label>
               <Input
@@ -57,22 +56,21 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               />
             </div>
             <Link href="/student/dashboard" className="grid gap-2">
-            <Button disabled={isLoading}>
-              {isLoading && (
-                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-              )}
-              Sign In 
-            </Button>
+              <Button disabled={isLoading}>
+                {isLoading && (
+                  <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                )}
+                Sign In
+              </Button>
             </Link>
             <Link href="organization/lookup" className="grid gap-2">
-            <Button disabled={isLoading}>
-              {isLoading && (
-                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-              )}
-              Lookup Sign In 
-            </Button>
+              <Button disabled={isLoading}>
+                {isLoading && (
+                  <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                )}
+                Lookup Sign In
+              </Button>
             </Link>
-            
           </div>
         </form>
       </div>
