@@ -11,10 +11,33 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 
+const links = {
+  dashboard: {
+    name: "Dashboard",
+    href: "/student/dashboard",
+  },
+  EditProfile: {
+    name: "Edit Profile",
+    href: "/student/dashboard/EditProfile",
+  },
+  account: {
+    name: "Account",
+  },
+  projects: {
+    name: "Projects",
+  },
+  internships: {
+    name: "Internship",
+  },
+};
+
+// TODO: - fix type errors
 const PageNav = () => {
   const pathname = usePathname();
-  const path = pathname.split("/").filter((p) => p !== "" && p !== "student");
-  const currentPath = path[path.length - 1];
+  const path: string[] = pathname
+    .split("/")
+    .filter((p) => p !== "" && p !== "student");
+  const currentPath: string = path[path.length - 1];
 
   return (
     <Breadcrumb>
@@ -38,26 +61,25 @@ const PageNav = () => {
             <BreadcrumbPage>Login</BreadcrumbPage>
           )}
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {currentPath !== "dashboard" ? (
-            <BreadcrumbLink asChild>
-              <Link href="/student/dashboard" prefetch={false}>
-                Dashboard
-              </Link>
-            </BreadcrumbLink>
-          ) : (
-            <BreadcrumbPage>Dashboard</BreadcrumbPage>
-          )}
-        </BreadcrumbItem>
-        {currentPath === "EditProfile" && (
-          <>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Edit Profile</BreadcrumbPage>
-            </BreadcrumbItem>
-          </>
-        )}
+        {path.map((p: string, index) => {
+          const isLast = index === path.length - 1;
+          return (
+            <>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem key={index}>
+                {isLast ? (
+                  <BreadcrumbPage>{links[p].name}</BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink asChild>
+                    <Link href={links[p].href} prefetch={false}>
+                      {links[p].name}
+                    </Link>
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+            </>
+          );
+        })}
       </BreadcrumbList>
     </Breadcrumb>
   );
