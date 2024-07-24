@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
 import PageNav from "@/components/page-nav";
 import { NotificationSheet } from "@/components/notification-sheet";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export default function StudentLayout({
   children,
@@ -35,6 +36,7 @@ export default function StudentLayout({
                 <DropdownMenuItem>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <ModeToggle toggle />
             <NotificationSheet />
           </div>
         </div>
