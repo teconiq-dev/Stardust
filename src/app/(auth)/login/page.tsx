@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { UserAuthForm } from "./user-auth-form";
+import FUILoginWithGridProvider from "./user-auth-form";
 import { useTheme } from "next-themes";
 
 export default function AuthenticationPage() {
@@ -28,7 +28,7 @@ export default function AuthenticationPage() {
             Enter your StudentID below to login
           </p>
         </div>
-        <UserAuthForm />
+        <FUILoginWithGridProvider />
         <p className="px-8 text-center text-sm text-muted-foreground">
           By clicking continue, you agree to our{" "}
           <Link
