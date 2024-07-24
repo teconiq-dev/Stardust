@@ -1,8 +1,7 @@
 import * as React from "react"
 import { SVGProps } from "react"
 import {cn} from "@/lib/utils";
-import {Simulate} from "react-dom/test-utils";
-import reset = Simulate.reset;
+
 const StudentSvg = (props: SVGProps<SVGSVGElement>) => (
     <svg
         className={cn(
