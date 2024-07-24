@@ -2,10 +2,17 @@
 import Link from "next/link";
 import { UserAuthForm } from "./user-auth-form";
 import { useTheme } from "next-themes";
+import { FlipWords } from "@/components/ui/flip-words";
+import React, { useState } from "react";
+import Studentsvg from "../../../../public/studentsvg";
+import OrgSvg from "../../../../public/organizationsvg";
+import TeachSvg from "../../../../public/teacher";
 
 export default function AuthenticationPage() {
   const { theme } = useTheme();
-
+  const words = ["Student", "Organization", "Faculty"];
+  const [, setReset] = useState(false);
+// TODO: create toggle mode for each icon and change heading accordingly
   return (
     <div className="mx-auto flex flex-1 w-full flex-col justify-center space-y-6 bg-transparent">
       {
@@ -19,28 +26,65 @@ export default function AuthenticationPage() {
         )
       }
 
-      <div className="flex flex-col m-14 p-10 space-y-2 text-center transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]">
+      <div
+          className="flex flex-col m-14 p-10 space-y-2 text-center transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]">
+
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">
-            Students Login
+            <FlipWords words={words}/> Login
           </h1>
           <p className="text-sm text-muted-foreground">
             Enter your StudentID below to login
           </p>
         </div>
-        <UserAuthForm />
+        <div>
+          <div className="grid grid-cols-3 gap-x-3">
+            <button
+                onMouseEnter={() => setReset(false)}
+                onMouseLeave={() => setReset(true)}
+                className="group flex transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]  border-white/10  items-center justify-center py-5 border rounded-lg hover:bg-transparent/50 duration-150 active:bg-transparent/50"
+            >
+              <Studentsvg/>
+              <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Student
+              </span>
+            </button>
+            <button
+                onMouseEnter={() => setReset(false)}
+                onMouseLeave={() => setReset(true)}
+                className="group flex transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]  border-white/10  items-center justify-center py-5 border rounded-lg hover:bg-transparent/50 duration-150 active:bg-transparent/50"
+            >
+              <OrgSvg/>
+              <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Organization
+              </span>
+            </button>
+            <button
+                onMouseEnter={() => setReset(false)}
+                onMouseLeave={() => setReset(true)}
+                className="group flex transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]  border-white/10  items-center justify-center py-5 border rounded-lg hover:bg-transparent/50 duration-150 active:bg-transparent/50"
+            >
+              <TeachSvg/>
+              <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Teacher
+              </span>
+            </button>
+            {/*TODO: during hover make icon invisible or give background to text */}
+          </div>
+        </div>
+        <UserAuthForm/>
         <p className="px-8 text-center text-sm text-muted-foreground">
-          By clicking continue, you agree to our{" "}
+        By clicking continue, you agree to our{" "}
           <Link
-            href="/terms"
-            className="underline underline-offset-4 hover:text-primary"
+              href="/terms"
+              className="underline underline-offset-4 hover:text-primary"
           >
             Terms of Service
           </Link>{" "}
           and{" "}
           <Link
-            href="/privacy"
-            className="underline underline-offset-4 hover:text-primary"
+              href="/privacy"
+              className="underline underline-offset-4 hover:text-primary"
           >
             Privacy Policy
           </Link>
