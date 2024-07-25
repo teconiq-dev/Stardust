@@ -22,16 +22,20 @@ const links = {
   },
   account: {
     name: "Account",
+    href: "",
   },
   projects: {
     name: "Projects",
+    href: "",
   },
   internships: {
     name: "Internship",
+    href: "",
   },
 };
 
-// TODO: - fix type errors
+type LinkKeys = keyof typeof links;
+
 const PageNav = () => {
   const pathname = usePathname();
   const path: string[] = pathname
@@ -62,17 +66,19 @@ const PageNav = () => {
           )}
         </BreadcrumbItem>
         {path.map((p: string, index) => {
+          const link = links[p as LinkKeys];
+          if (!link) return null; // Handle undefined link safely
           const isLast = index === path.length - 1;
           return (
             <>
               <BreadcrumbSeparator />
               <BreadcrumbItem key={index}>
                 {isLast ? (
-                  <BreadcrumbPage>{links[p].name}</BreadcrumbPage>
+                  <BreadcrumbPage>{link.name}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
-                    <Link href={links[p].href} prefetch={false}>
-                      {links[p].name}
+                    <Link href={link.href} prefetch={false}>
+                      {link.name}
                     </Link>
                   </BreadcrumbLink>
                 )}
