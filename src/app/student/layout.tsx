@@ -10,17 +10,41 @@ import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
 import PageNav from "@/components/page-nav";
 import { NotificationSheet } from "@/components/notification-sheet";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export default function StudentLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const links = {
+    dashboard: {
+      name: "Dashboard",
+      href: "/student/dashboard",
+    },
+    EditProfile: {
+      name: "Edit Profile",
+      href: "/student/dashboard/EditProfile",
+    },
+    account: {
+      name: "Account",
+      href: "",
+    },
+    projects: {
+      name: "Projects",
+      href: "",
+    },
+    internships: {
+      name: "Internship",
+      href: "",
+    },
+  };
+
   return (
     <section>
       <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
         <div className="mx-auto flex items-center justify-between">
-          <PageNav />
+          <PageNav links={links} />
           <div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -35,6 +59,7 @@ export default function StudentLayout({
                 <DropdownMenuItem>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <ModeToggle toggle />
             <NotificationSheet />
           </div>
         </div>

@@ -31,7 +31,6 @@ function SkillSearch({ selectedSkills, setSelectedSkills }: SkillSearchProps) {
   useEffect(() => {
     inputVal.length > 0 ? setShowList(true) : setShowList(false);
   }, [inputVal]);
-  console.log(inputVal);
 
   const handleAddSkill = (key: string, skill: Skill) => {
     setSelectedSkills((prevState: SelectedSkills) => {

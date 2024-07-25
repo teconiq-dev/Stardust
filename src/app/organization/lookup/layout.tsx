@@ -47,7 +47,7 @@ export default function LookupLayout({
               </Button>
             </Link>
           ))}
-          <ModeToggle />
+          <ModeToggle toggle />
         </nav>
       </header>
       {children}

@@ -11,10 +11,21 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 
-const PageNav = () => {
+type PageNavProps = {
+  links: {
+    [key: string]: {
+      name: string;
+      href: string;
+    };
+  };
+};
+const PageNav = ({ links }: PageNavProps) => {
   const pathname = usePathname();
-  const path = pathname.split("/").filter((p) => p !== "" && p !== "student");
-  const currentPath = path[path.length - 1];
+  const path: string[] = pathname
+    .split("/")
+    .filter((p) => p !== "" && p !== "student");
+  const currentPath: string = path[path.length - 1];
+  type LinkKeys = keyof typeof links;
 
   return (
     <Breadcrumb>
@@ -38,26 +49,27 @@ const PageNav = () => {
             <BreadcrumbPage>Login</BreadcrumbPage>
           )}
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {currentPath !== "dashboard" ? (
-            <BreadcrumbLink asChild>
-              <Link href="/student/dashboard" prefetch={false}>
-                Dashboard
-              </Link>
-            </BreadcrumbLink>
-          ) : (
-            <BreadcrumbPage>Dashboard</BreadcrumbPage>
-          )}
-        </BreadcrumbItem>
-        {currentPath === "EditProfile" && (
-          <>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Edit Profile</BreadcrumbPage>
-            </BreadcrumbItem>
-          </>
-        )}
+        {path.map((p: string, index) => {
+          const link = links[p as LinkKeys];
+          if (!link) return null; // Handle undefined link safely
+          const isLast = index === path.length - 1;
+          return (
+            <>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem key={index}>
+                {isLast ? (
+                  <BreadcrumbPage>{link.name}</BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink asChild>
+                    <Link href={link.href} prefetch={false}>
+                      {link.name}
+                    </Link>
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+            </>
+          );
+        })}
       </BreadcrumbList>
     </Breadcrumb>
   );
