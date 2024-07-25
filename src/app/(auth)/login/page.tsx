@@ -4,9 +4,9 @@ import { UserAuthForm } from "./user-auth-form";
 import { useTheme } from "next-themes";
 import { FlipWords } from "@/components/ui/flip-words";
 import React, { useState } from "react";
-import Studentsvg from "../../../../public/studentsvg";
-import OrgSvg from "../../../../public/organizationsvg";
-import TeachSvg from "../../../../public/teacher";
+import Studentsvg from "../../../components/Icons/studentsvg";
+import OrgSvg from "../../../components/Icons/organizationsvg";
+import TeachSvg from "../../../components/Icons/teacher";
 
 export default function AuthenticationPage() {
   const { theme } = useTheme();
