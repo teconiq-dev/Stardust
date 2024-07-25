@@ -2,10 +2,10 @@ import { Separator } from "@/components/ui/separator";
 import { AddPro } from "./proj-form";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description: "Create student profile.",
-};
+// export const metadata: Metadata = {
+//   title: "Projects",
+//   description: "Create student profile.",
+// };
 
 export default function SettingsProjectPage() {
   return (

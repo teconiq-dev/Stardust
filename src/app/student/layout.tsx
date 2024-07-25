@@ -1,100 +1,71 @@
-import Link from "next/link";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { User } from "lucide-react";
-import PageNav from "@/components/page-nav";
-import { NotificationSheet } from "@/components/notification-sheet";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+"use client";
 
-export default function StudentLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const links = {
-    dashboard: {
-      name: "Dashboard",
-      href: "/student/dashboard",
-    },
-    EditProfile: {
-      name: "Edit Profile",
-      href: "/student/dashboard/EditProfile",
-    },
-    account: {
-      name: "Account",
-      href: "",
-    },
-    projects: {
-      name: "Projects",
-      href: "",
-    },
-    internships: {
-      name: "Internship",
-      href: "",
-    },
-  };
+import React from "react";
+import { Tabs } from "@/components/ui/tabs";
+import SettingsProfilePage from "@/app/student/dashboard/EditProfile/(profile)/page";
+import SettingsAccountPage from "@/app/student/dashboard/EditProfile/account/page";
+import SettingsInternshipPage from "@/app/student/dashboard/EditProfile/internships/page";
+import SettingsProjectPage from "@/app/student/dashboard/EditProfile/projects/page";
+import Dashboard from "@/app/student/dashboard/page";
 
-  return (
-    <section>
-      <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
-        <div className="mx-auto flex items-center justify-between">
-          <PageNav links={links} />
-          <div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <User />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>My Account</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <ModeToggle toggle />
-            <NotificationSheet />
-          </div>
+
+export default function StudentLayout() {
+    const links = [
+        {
+            title: "Dashboard",
+            value: "dashboard",
+            content: (
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+                    <p>Product Tab</p>
+                    <Dashboard />
+                </div>
+            ),
+        },
+        {
+            title: "Profile",
+            value: "profile",
+            content: (
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+                    <p>Product Tab</p>
+                    <SettingsProfilePage />
+                </div>
+            ),
+        },
+        {
+            title: "Account",
+            value: "account",
+            content: (
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+                    <p>Product Tab</p>
+                    <SettingsAccountPage />
+                </div>
+            ),
+        },
+        {
+            title: "Project",
+            value: "project",
+            content: (
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+                    <p>Product Tab</p>
+                    <SettingsProjectPage />
+                </div>
+            ),
+        },
+        {
+            title: "Internship",
+            value: "internship",
+            content: (
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+                    <p>Product Tab</p>
+                    <SettingsInternshipPage />
+                </div>
+            ),
+        },
+    ];
+
+    return (
+        <div className="h-screen md:h-[40rem] [perspective:1000px] relative flex flex-row mx-auto w-full items-start justify-start my-40">
+            <Tabs tabs={links} />
         </div>
-      </header>
-      {children}
-      <footer className="bg-muted px-4 py-6 sm:px-6 md:py-8">
-        <div className="container mx-auto flex items-center justify-between">
-          <p className="text-sm text-muted-foreground">
-            &copy; 2024 Teconiq-dev. All rights reserved.
-          </p>
-          <nav className="flex items-center gap-4">
-            <Link
-              href="/extras/privacypolicy"
-              className="text-sm hover:underline"
-              prefetch={false}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/tos"
-              className="text-sm hover:underline"
-              prefetch={false}
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/contactus"
-              className="text-sm hover:underline"
-              prefetch={false}
-            >
-              Contact Us
-            </Link>
-          </nav>
-        </div>
-      </footer>
-    </section>
-  );
+    );
 }

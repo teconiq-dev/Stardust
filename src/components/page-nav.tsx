@@ -14,7 +14,7 @@ import Link from "next/link";
 type PageNavProps = {
   links: {
     [key: string]: {
-      name: string;
+      label: string;
       href: string;
     };
   };
@@ -58,11 +58,11 @@ const PageNav = ({ links }: PageNavProps) => {
               <BreadcrumbSeparator />
               <BreadcrumbItem key={index}>
                 {isLast ? (
-                  <BreadcrumbPage>{link.name}</BreadcrumbPage>
+                  <BreadcrumbPage>{link.label}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
                     <Link href={link.href} prefetch={false}>
-                      {link.name}
+                      {link.label}
                     </Link>
                   </BreadcrumbLink>
                 )}
