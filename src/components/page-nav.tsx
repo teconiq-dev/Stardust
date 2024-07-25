@@ -11,37 +11,21 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 
-const links = {
-  dashboard: {
-    name: "Dashboard",
-    href: "/student/dashboard",
-  },
-  EditProfile: {
-    name: "Edit Profile",
-    href: "/student/dashboard/EditProfile",
-  },
-  account: {
-    name: "Account",
-    href: "",
-  },
-  projects: {
-    name: "Projects",
-    href: "",
-  },
-  internships: {
-    name: "Internship",
-    href: "",
-  },
+type PageNavProps = {
+  links: {
+    [key: string]: {
+      name: string;
+      href: string;
+    };
+  };
 };
-
-type LinkKeys = keyof typeof links;
-
-const PageNav = () => {
+const PageNav = ({ links }: PageNavProps) => {
   const pathname = usePathname();
   const path: string[] = pathname
     .split("/")
     .filter((p) => p !== "" && p !== "student");
   const currentPath: string = path[path.length - 1];
+  type LinkKeys = keyof typeof links;
 
   return (
     <Breadcrumb>

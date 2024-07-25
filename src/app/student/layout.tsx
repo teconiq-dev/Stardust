@@ -17,11 +17,34 @@ export default function StudentLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const links = {
+    dashboard: {
+      name: "Dashboard",
+      href: "/student/dashboard",
+    },
+    EditProfile: {
+      name: "Edit Profile",
+      href: "/student/dashboard/EditProfile",
+    },
+    account: {
+      name: "Account",
+      href: "",
+    },
+    projects: {
+      name: "Projects",
+      href: "",
+    },
+    internships: {
+      name: "Internship",
+      href: "",
+    },
+  };
+
   return (
     <section>
       <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
         <div className="mx-auto flex items-center justify-between">
-          <PageNav />
+          <PageNav links={links} />
           <div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
