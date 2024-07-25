@@ -8,9 +8,11 @@ import { Label } from "@/components/ui/label";
 import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  selectedRole: string;
+}
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+export function UserAuthForm({ className, selectedRole, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
@@ -33,7 +35,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               </Label>
               <Input
                 id="userID"
-                placeholder="21T1101"
+                placeholder="ID"
                 type="text"
                 autoCapitalize="none"
                 autoComplete="username"
@@ -55,22 +57,27 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 disabled={isLoading}
               />
             </div>
-            <Link href="/student/dashboard" className="grid gap-2">
-              <Button disabled={isLoading}>
-                {isLoading && (
-                  <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-                )}
-                Sign In
-              </Button>
-            </Link>
-            <Link href="organization/lookup" className="grid gap-2">
-              <Button disabled={isLoading}>
-                {isLoading && (
-                  <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-                )}
-                Lookup Sign In
-              </Button>
-            </Link>
+
+            {selectedRole === "Student" && (
+                <Link href="/student/dashboard" className="grid gap-2">
+                  <Button disabled={isLoading}>
+                    {isLoading && (
+                        <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    Sign In
+                  </Button>
+                </Link>
+            )}
+            {selectedRole === "Organization" && (
+                <Link href="organization/lookup" className="grid gap-2">
+                  <Button disabled={isLoading}>
+                    {isLoading && (
+                        <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    Lookup Sign In
+                  </Button>
+                </Link>
+            )}
           </div>
         </form>
       </div>
