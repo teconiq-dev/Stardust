@@ -3,7 +3,7 @@ import {
   CalendarFold as CalendarIcon,
 } from "lucide-react";
 import { WobbleCard } from "@/components/ui/wobble-card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,16 +22,18 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 
+// TODO: change colours of shadcn components(stale black in dark mode and pure white in light mode)
+
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <main className="flex-1 px-4 py-6 sm:px-6 md:py-8">
         <div className="container mx-auto grid gap-8">
           <WobbleCard
-              containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
+              containerClassName="col-span-1 lg:col-span-2 h-full bg-indigo-800 min-h-[500px] lg:min-h-[300px]"
           >
           <section>
-            <div className="flex items-center justify-between ">
+            <div className="flex items-center justify-between z-10">
               <div>
                 <h2 className="text-2xl font-bold">Resume Viewer</h2>
                 <p className="text-muted-foreground">
@@ -51,7 +53,7 @@ export default function Dashboard() {
                       Last updated: May 15, 2023
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 z-10">
                     <Button variant="outline" size="sm">
                       View
                     </Button>
@@ -78,7 +80,7 @@ export default function Dashboard() {
                       Last updated: April 20, 2023
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 z-10">
                     <Button variant="outline" size="sm">
                       View
                     </Button>
@@ -105,7 +107,7 @@ export default function Dashboard() {
                       Last updated: March 10, 2023
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 z-10">
                     <Button variant="outline" size="sm">
                       View
                     </Button>
@@ -126,7 +128,7 @@ export default function Dashboard() {
             </div>
           </section>
           </WobbleCard>
-          <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-blue-900">
+          <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-red-900">
           <section>
             <div className="flex items-center justify-between">
               <div>
@@ -221,6 +223,7 @@ export default function Dashboard() {
             </div>
           </section>
           </WobbleCard>
+          <WobbleCard containerClassName="col-span-2 bg-lime-900 min-h-[300px] z-0">
           <section>
             <div className="flex items-center justify-between">
               <div>
@@ -232,7 +235,7 @@ export default function Dashboard() {
             </div>
             <Accordion type="single" collapsible className="mt-6">
               <AccordionItem value="item-1">
-                <AccordionTrigger>
+                <AccordionTrigger className="z-10">
                   How to Get Selected on Interviews
                 </AccordionTrigger>
                 <AccordionContent>
@@ -270,7 +273,7 @@ export default function Dashboard() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>How to Design a Resume</AccordionTrigger>
+                <AccordionTrigger className="z-10">How to Design a Resume</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
                     <p>Here are some tips for designing an effective resume:</p>
@@ -304,7 +307,7 @@ export default function Dashboard() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>
+                <AccordionTrigger className="z-10">
                   CV vs. Resume: What&apos;s the Difference?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -343,10 +346,8 @@ export default function Dashboard() {
               </AccordionItem>
             </Accordion>
           </section>
+          </WobbleCard>
         </div>
-        {/*<BackgroundBeams />*/}
-        {/*TODO: Fix z-index of wobble card*/}
-        {/*TODO: fix light and dark colours of shadcn components*/}
       </main>
     </div>
 
