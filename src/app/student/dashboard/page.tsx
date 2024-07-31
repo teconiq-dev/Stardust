@@ -344,7 +344,7 @@ export default function Dashboard() {
             </Accordion>
           </section>
         </div>
-        <BackgroundBeams />
+        {/*<BackgroundBeams />*/}
         {/*TODO: Fix z-index of wobble card*/}
         {/*TODO: fix light and dark colours of shadcn components*/}
       </main>
