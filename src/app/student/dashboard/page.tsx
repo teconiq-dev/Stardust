@@ -3,6 +3,7 @@ import {
   CalendarFold as CalendarIcon,
 } from "lucide-react";
 import { WobbleCard } from "@/components/ui/wobble-card";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,7 +28,7 @@ export default function Dashboard() {
       <main className="flex-1 px-4 py-6 sm:px-6 md:py-8">
         <div className="container mx-auto grid gap-8">
           <WobbleCard
-              containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px] z-0 pointer-events-auto"
+              containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
           >
           <section>
             <div className="flex items-center justify-between ">
@@ -40,7 +41,7 @@ export default function Dashboard() {
 
               <Button>Upload Resume</Button>
             </div>
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 z-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardContent className="flex flex-col items-center justify-center gap-4 p-6">
                   <FileIcon className="h-12 w-12 text-primary" />
@@ -343,7 +344,10 @@ export default function Dashboard() {
             </Accordion>
           </section>
         </div>
+        <BackgroundBeams />
+        {/*TODO: Fix z-index of wobble card*/}
       </main>
     </div>
+
   );
 }
