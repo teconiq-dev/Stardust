@@ -20,12 +20,12 @@ export default function AuthenticationPage() {
     },
   ];
   return (
-    <div className="flex flex-1 w-full flex-col justify-center bg-transparent p-5">
+    <div className="flex flex-1 w-full flex-col justify-center bg-transparent py-1 px-4 md:p-5">
       <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start mb-4">
         <Tabs
           tabs={tabs}
           contentClassName="backdrop-blur-lg h-fit bg-gradient-to-r from-blue-500/5 to-purple-500/5"
-          containerClassName="flex justify-center mt-10"
+          containerClassName="flex justify-center mt-5 md:mt-10"
         />
       </div>
     </div>
