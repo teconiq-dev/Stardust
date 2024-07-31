@@ -52,18 +52,21 @@ export default function LoginLayout({
         <div className="flex flex-1 flex-col m-10 bg-transparent border-r-0 md:border-r">
           <div className="flex items-center text-lg font-medium mb-3">
             <Command size={24} className="mr-2" />
-            Bharata Mata College - Computer Science Department
+            Teconiq - Computer Science Department
           </div>
-          <div className="relative z-10 w-full flex flex-col justify-center space-y-4">
-            <IconCloud iconSlugs={slugs} />
-            <blockquote className="space-y-2">
-              <p className="text-lg">
-                &ldquo;Education is the most powerful weapon which you can use
-                to change the world.&rdquo;
-              </p>
-              <footer className="text-sm">Nelson Mandela</footer>
-            </blockquote>
+          <div className= "hidden md:block">
+            <div className="relative z-10 w-full flex flex-col justify-center space-y-4">
+              <IconCloud iconSlugs={slugs}/>
+              <blockquote className="space-y-2">
+                <p className="text-lg">
+                  &ldquo;Education is the most powerful weapon which you can use
+                  to change the world.&rdquo;
+                </p>
+                <footer className="text-sm">Nelson Mandela</footer>
+              </blockquote>
+            </div>
           </div>
+
         </div>
         {children}
       </div>
