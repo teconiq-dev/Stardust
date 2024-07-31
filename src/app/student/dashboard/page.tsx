@@ -3,7 +3,7 @@ import {
   CalendarFold as CalendarIcon,
 } from "lucide-react";
 import { WobbleCard } from "@/components/ui/wobble-card";
-
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -32,6 +32,7 @@ export default function Dashboard() {
           <WobbleCard
               containerClassName="col-span-1 lg:col-span-2 h-full bg-indigo-800 min-h-[500px] lg:min-h-[300px]"
           >
+            <BackgroundBeams/>
           <section>
             <div className="flex items-center justify-between z-10">
               <div>
@@ -129,6 +130,7 @@ export default function Dashboard() {
           </section>
           </WobbleCard>
           <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-red-900">
+            <BackgroundBeams/>
           <section>
             <div className="flex items-center justify-between">
               <div>
@@ -204,6 +206,7 @@ export default function Dashboard() {
           </section>
           </WobbleCard>
           <WobbleCard containerClassName="col-span-1 bg-green-900 min-h-[300px]">
+            <BackgroundBeams/>
           <section>
             <div className="flex items-center justify-between">
               <div>
@@ -224,6 +227,7 @@ export default function Dashboard() {
           </section>
           </WobbleCard>
           <WobbleCard containerClassName="col-span-2 bg-lime-900 min-h-[300px] z-0">
+            <BackgroundBeams/>
           <section>
             <div className="flex items-center justify-between">
               <div>
