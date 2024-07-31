@@ -346,6 +346,7 @@ export default function Dashboard() {
         </div>
         <BackgroundBeams />
         {/*TODO: Fix z-index of wobble card*/}
+        {/*TODO: fix light and dark colours of shadcn components*/}
       </main>
     </div>
 
