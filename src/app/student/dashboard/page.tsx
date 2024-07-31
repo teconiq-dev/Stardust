@@ -1,15 +1,15 @@
 import {
   FileBadge2 as FileIcon,
-  CalendarFold as CalendarIcon,
+
 } from "lucide-react";
+import { WobbleCard } from "@/components/ui/wobble-card";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import Image from 'next/image';
+import { PinContainer } from "@/components/ui/3d-pin";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
 } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -20,19 +20,26 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 
+// TODO: change colours of shadcn components(stale black in dark mode and pure white in light mode)
+
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <main className="flex-1 px-4 py-6 sm:px-6 md:py-8">
         <div className="container mx-auto grid gap-8">
+          <WobbleCard
+              containerClassName="col-span-1 lg:col-span-2 h-full bg-indigo-800 min-h-[500px] lg:min-h-[300px]"
+          >
+            <BackgroundBeams/>
           <section>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between z-10">
               <div>
                 <h2 className="text-2xl font-bold">Resume Viewer</h2>
                 <p className="text-muted-foreground">
                   Manage your resume and application materials.
                 </p>
               </div>
+
               <Button>Upload Resume</Button>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -45,7 +52,7 @@ export default function Dashboard() {
                       Last updated: May 15, 2023
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 z-10">
                     <Button variant="outline" size="sm">
                       View
                     </Button>
@@ -72,7 +79,7 @@ export default function Dashboard() {
                       Last updated: April 20, 2023
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 z-10">
                     <Button variant="outline" size="sm">
                       View
                     </Button>
@@ -99,7 +106,7 @@ export default function Dashboard() {
                       Last updated: March 10, 2023
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 z-10">
                     <Button variant="outline" size="sm">
                       View
                     </Button>
@@ -119,6 +126,9 @@ export default function Dashboard() {
               </Card>
             </div>
           </section>
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-2 min-h-[300px] bg-red-900">
+            <BackgroundBeams/>
           <section>
             <div className="flex items-center justify-between">
               <div>
@@ -129,74 +139,95 @@ export default function Dashboard() {
               </div>
               <Button variant="outline">View All</Button>
             </div>
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Amazon Campus Placement</CardTitle>
-                  <CardDescription>
-                    Amazon is conducting on-campus interviews for software
-                    engineering roles.
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="text-muted-foreground">
-                      <CalendarIcon className="mr-1 inline-block h-4 w-4" />
-                      June 15, 2023
+              <div className="w-full flex items-center justify-center ">
+                <PinContainer
+                    title="/amazon.jobs"
+                    href="https://www.amazon.jobs/content/en/teams/amazon-web-services/internships"
+                >
+                  <div
+                      className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+                    <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
+                      Amazon Cloud Service intern
+                    </h3>
+                    <div className="text-base !m-0 !p-0 font-normal">
+            <span className="text-slate-500 ">
+              July 23,2024
+            </span>
                     </div>
-                    <Button variant="outline" size="sm">
-                      Apply Now
-                    </Button>
-                  </div>
-                </CardFooter>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Microsoft Internship Program</CardTitle>
-                  <CardDescription>
-                    Microsoft is offering summer internships for computer
-                    science students.
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="text-muted-foreground flex items-center justify-between">
-                      <CalendarIcon className="mr-1 inline-block h-4 w-4" />
-                      July 1, 2023
+                    <div
+                        className="flex justify-center items-center flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
+                      <Image
+                          src="/amazon_13171583.png"
+                          alt="Apple Logo"
+                          width={512}
+                          height={512}
+                          className="w-1/2 rounded-lg mt-4"
+                      />
                     </div>
-                    <Button variant="outline" size="sm">
-                      Apply Now
-                    </Button>
                   </div>
-                </CardFooter>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Google Developer Student Club</CardTitle>
-                  <CardDescription>
-                    Google is organizing a workshop on building web
-                    applications.
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="text-muted-foreground">
-                      <CalendarIcon className="mr-1 inline-block h-4 w-4" />
-                      June 30, 2023
+                </PinContainer>
+                <PinContainer
+                    title="/careers.microsoft"
+                    href="https://careers.microsoft.com/v2/global/en/careers-in-ai.html"
+                >
+                  <div
+                      className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+                    <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
+                      Microsoft AI internship
+                    </h3>
+                    <div className="text-base !m-0 !p-0 font-normal">
+            <span className="text-slate-500 ">
+              June 23,2024
+            </span>
                     </div>
-                    <Button variant="outline" size="sm">
-                      Register
-                    </Button>
+                    <div
+                        className="flex justify-center items-center flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
+                      <Image
+                          src="/microsoft_13171717.png"
+                          alt="Apple Logo"
+                          width={512}
+                          height={512}
+                          className="w-1/2 rounded-lg mt-4"
+                      />
+                    </div>
                   </div>
-                </CardFooter>
-              </Card>
-            </div>
+                </PinContainer>
+                <PinContainer
+                    title="/jobs.apple"
+                    href="https://jobs.apple.com/en-in/search?team=internships-STDNT-INTRN"
+                >
+                  <div
+                      className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+                    <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
+                      Apple Internship
+                    </h3>
+                    <div className="text-base !m-0 !p-0 font-normal">
+            <span className="text-slate-500 ">
+              August 15,2024
+            </span>
+                    </div>
+                    <div
+                        className="flex justify-center items-center flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
+                      <Image
+                          src="/apple_13171687.png"
+                          alt="Apple Logo"
+                          width={512}
+                          height={512}
+                          className="w-1/2 rounded-lg mt-4"
+                      />
+                    </div>
+                  </div>
+                </PinContainer>
+              </div>
           </section>
-          <section>
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-bold">Upcoming Events</h2>
-                <p className="text-muted-foreground">
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-1 bg-green-900 min-h-[300px]">
+            <BackgroundBeams/>
+            <section>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold">Upcoming Events</h2>
+                  <p className="text-muted-foreground">
                   View the calendar of upcoming placement-related events.
                 </p>
               </div>
@@ -210,6 +241,9 @@ export default function Dashboard() {
               </Card>
             </div>
           </section>
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-1 bg-lime-900 min-h-[300px] z-0">
+            <BackgroundBeams/>
           <section>
             <div className="flex items-center justify-between">
               <div>
@@ -221,7 +255,7 @@ export default function Dashboard() {
             </div>
             <Accordion type="single" collapsible className="mt-6">
               <AccordionItem value="item-1">
-                <AccordionTrigger>
+                <AccordionTrigger className="z-10">
                   How to Get Selected on Interviews
                 </AccordionTrigger>
                 <AccordionContent>
@@ -259,7 +293,7 @@ export default function Dashboard() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>How to Design a Resume</AccordionTrigger>
+                <AccordionTrigger className="z-10">How to Design a Resume</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
                     <p>Here are some tips for designing an effective resume:</p>
@@ -293,7 +327,7 @@ export default function Dashboard() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>
+                <AccordionTrigger className="z-10">
                   CV vs. Resume: What&apos;s the Difference?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -332,8 +366,10 @@ export default function Dashboard() {
               </AccordionItem>
             </Accordion>
           </section>
+          </WobbleCard>
         </div>
       </main>
     </div>
+
   );
 }
