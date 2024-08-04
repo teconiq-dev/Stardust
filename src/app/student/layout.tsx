@@ -42,7 +42,8 @@ export default function StudentLayout({
 
   return (
     <section>
-      <header className="sticky top-0 z-40 border-b bg-background px-4 py-3 sm:px-6 md:py-4">
+      {/* TODO: set bg-color for navbar*/}
+      <header className="sticky top-0 z-40 border-b-2 bg-secondary rounded-br-lg rounded-bl-lg px-4 py-2 sm:px-6 md:py-3">
         <div className="mx-auto flex items-center justify-between">
           <PageNav links={links} />
           <div>
