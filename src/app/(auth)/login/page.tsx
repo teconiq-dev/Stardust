@@ -13,11 +13,6 @@ export default function AuthenticationPage() {
       value: "organization",
       content: <UserAuthForm selectedRole="Organization" />,
     },
-    {
-      title: "Teacher",
-      value: "teacher",
-      content: <UserAuthForm selectedRole="Teacher" />,
-    },
   ];
   return (
     <div className="flex flex-1 w-full flex-col justify-center bg-transparent py-1 px-4 md:p-5">

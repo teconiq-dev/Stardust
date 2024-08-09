@@ -22,18 +22,15 @@ export default function LookupLayout({
       title: "Events",
       href: "#",
     },
-    {
-      title: "Feedback",
-      href: "#",
-    },
   ];
+  // TODO: Side menu for mobile (hide link buttons in phone but show in lg)
 
   return (
-    <section className="p-1">
-      <header className="flex items-center justify-between p-4 shadow-md shadow-primary transition-colors duration-300">
+    <section>
+      <header className="flex items-center justify-between p-4 shadow-md shadow-primary transition-colors duration-300 rounded-lg">
         <div className="flex items-center">
           <Star className="w-6 h-6 mr-2" />
-          <h1 className="text-xl font-bold">StarDust</h1>
+          <h1 className="text-xl font-semibold">StarDust</h1>
         </div>
         <nav className="flex items-center space-x-4">
           {navLink.map((link, key) => (
